@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.poc_modulo"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Google Components:
+    implementation "androidx.cardview:cardview:$card_view_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:material:$material_version"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Koin
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
+
+    //  Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0"
+    implementation 'androidx.core:core-ktx:1.6.0'
+    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+
+    //  Unit Testes
+    testImplementation "junit:junit:$test_junit_version"
+    androidTestImplementation "androidx.test:runner:$test_runner_version"
+
+    // Projects
+    implementation project(':ability')
+    implementation project(':details')
+    implementation project(':photogallery')
+    implementation project(':pokemon')
+}
