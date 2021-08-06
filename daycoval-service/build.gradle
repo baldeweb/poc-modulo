@@ -40,13 +40,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    //  ChuckInterceptor
+    debugImplementation "com.github.chuckerteam.chucker:library:$chuck_interceptor_version"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:$chuck_interceptor_version"
+
     //  Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
-
-    // Google Components:
-    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "com.google.android.material:material:$material_version"
 
     //  Koin
     implementation "io.insert-koin:koin-android:$koin_version"

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -27,13 +28,23 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
+
+    kotlinOptions.jvmTarget = "1.8"
+
+    viewBinding {
+        enabled true
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //  ChuckInterceptor
+    debugImplementation "com.github.chuckerteam.chucker:library:$chuck_interceptor_version"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:$chuck_interceptor_version"
+
+    //  Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     // Google Components:
     implementation "androidx.cardview:cardview:$card_view_version"
@@ -45,7 +56,6 @@ dependencies {
     implementation "com.google.code.gson:gson:$gson_version"
 
     // Koin
-    implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
 
     //  Kotlin
@@ -55,8 +65,12 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.6.0'
     //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    //  Retrofit
+    //  OkHttp
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     // Room
     implementation "androidx.room:room-runtime:$room_version"
@@ -67,6 +81,7 @@ dependencies {
 
     // Projects
     implementation project(':ability')
+    implementation project(':daycoval-service')
     implementation project(':details')
     implementation project(':photogallery')
     implementation project(':pokemon')
