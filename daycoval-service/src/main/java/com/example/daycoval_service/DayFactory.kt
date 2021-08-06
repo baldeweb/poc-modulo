@@ -13,8 +13,7 @@ class DayFactory {
     private fun <T> create(
         serviceAPI: Class<T>,
         url: String?,
-        context: Context,
-        encryptHeaders: Boolean? = false
+        context: Context
     ): T {
         val okHttpClient = getOkHttpClient(context, 61L)
         val retrofit = Retrofit.Builder()
