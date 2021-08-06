@@ -1,54 +1,64 @@
 package com.example.daycoval_service
 
-import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
+import com.example.daycoval_service.model.ServiceErrorModel
+import retrofit2.Response
+import java.io.IOException
 
 class DayFactory {
     companion object {
         const val TIMEOUT = 61L
-    }
 
-    private fun <T> create(
-        serviceAPI: Class<T>,
-        url: String?,
-        context: Context
-    ): T {
-        val okHttpClient = getOkHttpClient(context, TIMEOUT)
-        val retrofit = Retrofit.Builder()
-            .baseUrl(url ?: "")
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .client(okHttpClient.build())
-            .build()
+        private const val HTTP_OK = 200
+        private const val HTTP_UNAUTHORIZED = 401
+        private const val HTTP_INTERNAL_SERVER_ERROR = 500
 
-        return retrofit.create(serviceAPI)
-    }
+        fun <T> serviceCaller(
+            api: Response<T>,
+            onSuccess: (T) -> Unit,
+            onError: (ServiceErrorModel) -> Unit
+        ) {
+            if (api.code() == HTTP_OK) {
+                try {
+                    if (api.body() == null) {
+                        errorResponse(api, onError)
+                        return
+                    }
+                    api.body()?.let { onSuccess.invoke(it) }
+                } catch (exception: IOException) {
+                    errorResponse(api, onError)
+                }
+            } else {
+                errorResponse(api, onError)
+            }
+        }
 
-    private fun getOkHttpClient(
-        context: Context,
-        timeout: Long
-    ): OkHttpClient.Builder {
-        val okHttpClient: OkHttpClient.Builder = OkHttpClient.Builder()
-        okHttpClient.connectTimeout(timeout, TimeUnit.SECONDS)
-        okHttpClient.readTimeout(timeout, TimeUnit.SECONDS)
-        okHttpClient.writeTimeout(timeout, TimeUnit.SECONDS)
+        private fun errorResponse(
+            api: Response<*>,
+            onError: (ServiceErrorModel) -> Unit
+        ) {
+            try {
+                applyThrowableResponse(api, onError)
+            } catch (exception: IOException) {
+                onError.invoke(ServiceErrorModel(api.code(), Throwable(api.errorBody().toString())))
+            }
+        }
 
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level =
-            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
-            else HttpLoggingInterceptor.Level.NONE
+        @Synchronized
+        private fun applyThrowableResponse(
+            api: Response<*>,
+            onError: (ServiceErrorModel) -> Unit
+        ) {
+            val error = ServiceErrorModel()
+            error.httpCode = api.code()
 
-        okHttpClient.addInterceptor(interceptor)
+            val errorSerialized = (api.errorBody()?.bytes() as ByteArray).toString()
+            error.throwable = Throwable(errorSerialized)
 
-        if (BuildConfig.DEBUG)
-            okHttpClient.addInterceptor(ChuckerInterceptor.Builder(context).build())
-
-        return okHttpClient
+            when (error.httpCode) {
+                HTTP_UNAUTHORIZED -> onError.invoke(error)
+                in HTTP_INTERNAL_SERVER_ERROR..599 -> onError.invoke(error)
+                else -> onError.invoke(ServiceErrorModel(500))
+            }
+        }
     }
 }

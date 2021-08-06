@@ -2,9 +2,9 @@ package com.example.poc_modulo
 
 import android.app.Application
 import com.example.daycoval_service.DaycovalServiceDI
+import com.example.pokemon.PokemonDI
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import org.koin.dsl.module
 
 class DayApplication: Application() {
 
@@ -18,6 +18,7 @@ class DayApplication: Application() {
         instance = this
         val moduleList = listOf(
             DaycovalServiceDI().getModule(),
+            PokemonDI().getModule(),
         )
 
         startKoin {

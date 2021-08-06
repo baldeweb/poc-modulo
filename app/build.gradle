@@ -75,6 +75,10 @@ dependencies {
     // Room
     implementation "androidx.room:room-runtime:$room_version"
 
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+
     //  Unit Testes
     testImplementation "junit:junit:$test_junit_version"
     androidTestImplementation "androidx.test:runner:$test_runner_version"
