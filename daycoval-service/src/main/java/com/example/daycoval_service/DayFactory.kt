@@ -14,10 +14,9 @@ class DayFactory {
         serviceAPI: Class<T>,
         url: String?,
         context: Context,
-        timeout: Long,
         encryptHeaders: Boolean? = false
     ): T {
-        val okHttpClient = getOkHttpClient(context, url, timeout, encryptHeaders)
+        val okHttpClient = getOkHttpClient(context, 61L)
         val retrofit = Retrofit.Builder()
             .baseUrl(url ?: "")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
@@ -30,9 +29,7 @@ class DayFactory {
 
     private fun getOkHttpClient(
         context: Context,
-        hostApi: String?,
-        timeout: Long,
-        encryptHeaders: Boolean? = false
+        timeout: Long
     ): OkHttpClient.Builder {
         val okHttpClient: OkHttpClient.Builder = OkHttpClient.Builder()
         okHttpClient.connectTimeout(timeout, TimeUnit.SECONDS)
