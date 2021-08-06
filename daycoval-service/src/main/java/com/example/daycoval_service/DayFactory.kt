@@ -10,12 +10,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class DayFactory {
+    companion object {
+        const val TIMEOUT = 61L
+    }
+
     private fun <T> create(
         serviceAPI: Class<T>,
         url: String?,
         context: Context
     ): T {
-        val okHttpClient = getOkHttpClient(context, 61L)
+        val okHttpClient = getOkHttpClient(context, TIMEOUT)
         val retrofit = Retrofit.Builder()
             .baseUrl(url ?: "")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
