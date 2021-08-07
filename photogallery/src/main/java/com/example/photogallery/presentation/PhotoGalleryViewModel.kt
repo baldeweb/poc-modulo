@@ -1,6 +1,6 @@
 package com.example.photogallery.presentation
 
-import com.example.daycoval_service.presentation.BaseViewModel
+import com.example.shared_common.presentation.BaseViewModel
 
 class PhotoGalleryViewModel : BaseViewModel() {
 }

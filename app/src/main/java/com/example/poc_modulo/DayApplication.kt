@@ -5,6 +5,7 @@ import com.example.daycoval_service.DaycovalServiceDI
 import com.example.details.DetailPokemonDI
 import com.example.photogallery.PhotoGalleryDI
 import com.example.pokemon.PokemonDI
+import com.example.shared_common.SharedCommonDI
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -20,9 +21,10 @@ class DayApplication: Application() {
         instance = this
         val moduleList = listOf(
             DaycovalServiceDI().getModule(),
-            PokemonDI().getModule(),
+            DetailPokemonDI().getModule(),
             PhotoGalleryDI().getModule(),
-            DetailPokemonDI().getModule()
+            PokemonDI().getModule(),
+            SharedCommonDI().getModule()
         )
 
         startKoin {

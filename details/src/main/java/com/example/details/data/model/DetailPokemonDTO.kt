@@ -1,6 +1,6 @@
 package com.example.details.data.model
 
-import com.example.daycoval_service.data.model.Sprites
+import com.example.shared_common.data.model.Sprites
 import com.google.gson.annotations.SerializedName
 
 data class DetailPokemonDTO (

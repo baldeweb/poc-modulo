@@ -1,7 +1,7 @@
 package com.example.photogallery.presentation
 
 import android.os.Bundle
-import com.example.daycoval_service.presentation.BaseActivity
+import com.example.shared_common.presentation.BaseActivity
 import com.example.photogallery.databinding.ActivityPhotoGalleryBinding
 
 class PhotoGalleryActivity : BaseActivity<PhotoGalleryViewModel>() {

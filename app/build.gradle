@@ -89,4 +89,5 @@ dependencies {
     implementation project(':details')
     implementation project(':photogallery')
     implementation project(':pokemon')
+    implementation project(':shared-common')
 }

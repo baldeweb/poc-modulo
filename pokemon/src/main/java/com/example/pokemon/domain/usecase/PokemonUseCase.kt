@@ -1,7 +1,7 @@
 package com.example.pokemon.domain.usecase
 
-import com.example.daycoval_service.data.model.ServiceErrorModel
-import com.example.daycoval_service.data.model.PokemonDTO
+import com.example.shared_common.data.model.PokemonDTO
+import com.example.shared_common.data.model.ServiceErrorModel
 
 interface PokemonUseCase {
     suspend fun getPokemon(

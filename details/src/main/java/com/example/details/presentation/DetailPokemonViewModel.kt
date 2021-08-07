@@ -2,8 +2,7 @@ package com.example.details.presentation
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
-import com.example.daycoval_service.presentation.BaseViewModel
-import com.example.daycoval_service.presentation.DetailPokemonNavigation
+import com.example.shared_common.presentation.BaseViewModel
 import com.example.details.domain.usecase.DetailPokemonUseCase
 import kotlinx.coroutines.launch
 

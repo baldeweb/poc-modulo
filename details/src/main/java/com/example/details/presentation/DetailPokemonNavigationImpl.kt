@@ -3,8 +3,8 @@ package com.example.details.presentation
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.example.daycoval_service.presentation.BaseNavigation
-import com.example.daycoval_service.presentation.DetailPokemonNavigation
+import com.example.shared_common.presentation.BaseNavigation
+import com.example.shared_common.presentation.DetailPokemonNavigation
 
 class DetailPokemonNavigationImpl(
     private val context: Context

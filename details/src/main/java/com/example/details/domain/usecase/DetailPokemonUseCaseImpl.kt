@@ -1,8 +1,8 @@
 package com.example.details.domain.usecase
 
-import com.example.daycoval_service.data.model.ServiceErrorModel
 import com.example.details.data.model.DetailPokemonDTO
 import com.example.details.domain.repository.DetailPokemonRepository
+import com.example.shared_common.data.model.ServiceErrorModel
 
 class DetailPokemonUseCaseImpl(
     private val repository: DetailPokemonRepository

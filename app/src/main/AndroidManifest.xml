@@ -29,7 +29,7 @@
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name="com.example.daycoval_service.presentation.BaseActivity"
+            android:name="com.example.shared_common.presentation.BaseActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"/>
         <activity

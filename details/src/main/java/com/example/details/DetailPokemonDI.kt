@@ -1,6 +1,6 @@
 package com.example.details
 
-import com.example.daycoval_service.presentation.DetailPokemonNavigation
+import com.example.shared_common.presentation.DetailPokemonNavigation
 import com.example.details.domain.repository.DetailPokemonRepository
 import com.example.details.domain.repository.DetailPokemonRepositoryImpl
 import com.example.details.domain.usecase.DetailPokemonUseCase

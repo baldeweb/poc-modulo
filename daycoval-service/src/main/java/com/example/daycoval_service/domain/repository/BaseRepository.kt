@@ -3,10 +3,10 @@ package com.example.daycoval_service.domain.repository
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.daycoval_service.BuildConfig
-import com.example.daycoval_service.data.model.ServiceErrorModel
-import com.example.daycoval_service.presentation.adapter.CoroutineCallAdapterFactory
-import com.example.daycoval_service.presentation.constants.Constants
-import com.example.daycoval_service.presentation.constants.Constants.BASE_URL
+import com.example.shared_common.data.model.ServiceErrorModel
+import com.example.shared_common.presentation.adapter.CoroutineCallAdapterFactory
+import com.example.shared_common.presentation.constants.Constants
+import com.example.shared_common.presentation.constants.Constants.BASE_URL
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

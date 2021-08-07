@@ -66,5 +66,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
 
     //  Modulos
+    implementation project(':shared-common')
     implementation project(':daycoval-service')
 }

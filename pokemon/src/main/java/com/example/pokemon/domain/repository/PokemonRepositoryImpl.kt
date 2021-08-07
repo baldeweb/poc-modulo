@@ -2,9 +2,9 @@ package com.example.pokemon.domain.repository
 
 import android.content.Context
 import com.example.daycoval_service.domain.repository.BaseRepository
-import com.example.daycoval_service.data.model.ServiceErrorModel
-import com.example.daycoval_service.data.PokemonAPI
-import com.example.daycoval_service.data.model.PokemonDTO
+import com.example.shared_common.data.PokemonAPI
+import com.example.shared_common.data.model.PokemonDTO
+import com.example.shared_common.data.model.ServiceErrorModel
 
 class PokemonRepositoryImpl(
     context: Context

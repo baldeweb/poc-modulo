@@ -1,7 +1,7 @@
 package com.example.details.domain.usecase
 
-import com.example.daycoval_service.data.model.ServiceErrorModel
 import com.example.details.data.model.DetailPokemonDTO
+import com.example.shared_common.data.model.ServiceErrorModel
 
 interface DetailPokemonUseCase {
     suspend fun getPokemonDetail(
