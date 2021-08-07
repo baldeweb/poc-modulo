@@ -12,11 +12,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/ability" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/daycoval-service" />
             <option value="$PROJECT_DIR$/details" />
-            <option value="$PROJECT_DIR$/photogallery" />
+            <option value="$PROJECT_DIR$/photo-gallery" />
             <option value="$PROJECT_DIR$/pokemon" />
             <option value="$PROJECT_DIR$/shared-common" />
+            <option value="$PROJECT_DIR$/shared-service" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

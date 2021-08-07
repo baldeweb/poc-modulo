@@ -85,9 +85,9 @@ dependencies {
 
     // Projects
     implementation project(':ability')
-    implementation project(':daycoval-service')
+    implementation project(':shared-service')
     implementation project(':details')
-    implementation project(':photogallery')
+    implementation project(':photo-gallery')
     implementation project(':pokemon')
     implementation project(':shared-common')
 }
