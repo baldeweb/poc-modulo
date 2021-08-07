@@ -1,9 +1,9 @@
-package com.example.pokemon.presentation
+package com.example.daycoval_service
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pokemon.databinding.ActivityBaseBinding
+import com.example.daycoval_service.databinding.ActivityBaseBinding
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.component.KoinComponent
 import java.lang.reflect.ParameterizedType

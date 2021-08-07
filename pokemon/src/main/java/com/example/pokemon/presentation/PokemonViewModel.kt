@@ -4,7 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.pokemon.business.usecase.PokemonUseCase
+import com.example.daycoval_service.BaseViewModel
+import com.example.pokemon.domain.usecase.PokemonUseCase
 import com.example.daycoval_service.model.PokemonDTO
 import kotlinx.coroutines.launch
 
@@ -15,7 +16,7 @@ class PokemonViewModel(
     var pokemon : LiveData<PokemonDTO> = _pokemon
 
     fun getPokemon() {
-        viewModelScope.launch {
+        viewModelScope.launch(webServiceException) {
             useCase.getPokemon({
                 _pokemon.value = it
             }, {

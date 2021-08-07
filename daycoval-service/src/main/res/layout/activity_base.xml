@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".presentation.BaseActivity">
+    tools:context="com.example.daycoval_service.BaseActivity">
 
     <FrameLayout
         android:id="@+id/fml_base_layout"

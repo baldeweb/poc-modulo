@@ -1,9 +1,9 @@
-package com.example.pokemon.business.usecase
+package com.example.pokemon.domain.repository
 
 import com.example.daycoval_service.model.ServiceErrorModel
 import com.example.daycoval_service.model.PokemonDTO
 
-interface PokemonUseCase {
+interface PokemonRepository {
     suspend fun getPokemon(
         onSuccess: (PokemonDTO) -> Unit,
         onError: (ServiceErrorModel) -> Unit

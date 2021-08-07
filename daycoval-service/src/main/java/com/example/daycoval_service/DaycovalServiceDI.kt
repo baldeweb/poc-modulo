@@ -3,6 +3,7 @@ package com.example.daycoval_service
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.daycoval_service.Constants.BASE_URL
+import com.example.daycoval_service.Constants.TIMEOUT
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class DaycovalServiceDI {
-    fun getModule() : Module {
+    fun getModule(): Module {
         return module {
             single { create<PokemonAPI>(get()) }
         }
@@ -23,7 +24,7 @@ class DaycovalServiceDI {
 inline fun <reified T> create(
     context: Context
 ): T {
-    val okHttpClient = getOkHttpClient(context, DayFactory.TIMEOUT)
+    val okHttpClient = getOkHttpClient(context, TIMEOUT)
     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(

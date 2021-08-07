@@ -1,7 +1,7 @@
-package com.example.pokemon.business.usecase
+package com.example.pokemon.domain.usecase
 
 import com.example.daycoval_service.model.ServiceErrorModel
-import com.example.pokemon.business.repository.PokemonRepository
+import com.example.pokemon.domain.repository.PokemonRepository
 import com.example.daycoval_service.model.PokemonDTO
 
 class PokemonUseCaseImpl(private val repository: PokemonRepository): PokemonUseCase {

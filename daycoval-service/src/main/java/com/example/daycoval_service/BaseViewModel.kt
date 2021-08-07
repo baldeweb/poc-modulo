@@ -1,4 +1,4 @@
-package com.example.pokemon.presentation
+package com.example.daycoval_service
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler

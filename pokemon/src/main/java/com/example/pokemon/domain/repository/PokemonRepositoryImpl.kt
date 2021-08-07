@@ -1,15 +1,13 @@
-package com.example.pokemon.business.repository
+package com.example.pokemon.domain.repository
 
-import android.content.Context
-import com.example.daycoval_service.DayFactory.Companion.serviceCaller
+import com.example.daycoval_service.BaseRepository
 import com.example.daycoval_service.model.ServiceErrorModel
 import com.example.daycoval_service.PokemonAPI
 import com.example.daycoval_service.model.PokemonDTO
 
 class PokemonRepositoryImpl(
-    private val api: PokemonAPI,
-    private val context: Context
-) : BaseRepository<PokemonAPI>(api, context), PokemonRepository {
+    private val api: PokemonAPI
+) : BaseRepository<PokemonAPI>(api), PokemonRepository {
     override suspend fun getPokemon(
         onSuccess: (PokemonDTO) -> Unit,
         onError: (ServiceErrorModel) -> Unit
