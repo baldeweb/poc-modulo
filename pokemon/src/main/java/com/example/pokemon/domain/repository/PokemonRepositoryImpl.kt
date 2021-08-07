@@ -1,9 +1,9 @@
 package com.example.pokemon.domain.repository
 
-import com.example.daycoval_service.BaseRepository
-import com.example.daycoval_service.model.ServiceErrorModel
-import com.example.daycoval_service.PokemonAPI
-import com.example.daycoval_service.model.PokemonDTO
+import com.example.daycoval_service.domain.repository.BaseRepository
+import com.example.daycoval_service.data.model.ServiceErrorModel
+import com.example.daycoval_service.data.PokemonAPI
+import com.example.daycoval_service.data.model.PokemonDTO
 
 class PokemonRepositoryImpl(
     private val api: PokemonAPI

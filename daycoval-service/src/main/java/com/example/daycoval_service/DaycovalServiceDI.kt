@@ -2,11 +2,17 @@ package com.example.daycoval_service
 
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import com.example.daycoval_service.Constants.BASE_URL
-import com.example.daycoval_service.Constants.TIMEOUT
+import com.example.daycoval_service.data.DetailPokemonAPI
+import com.example.daycoval_service.data.PokemonAPI
+import com.example.daycoval_service.domain.repository.BaseRepository
+import com.example.daycoval_service.presentation.constants.Constants.BASE_URL
+import com.example.daycoval_service.presentation.constants.Constants.TIMEOUT
+import com.example.daycoval_service.presentation.BaseViewModel
+import com.example.daycoval_service.presentation.adapter.CoroutineCallAdapterFactory
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -16,7 +22,10 @@ import java.util.concurrent.TimeUnit
 class DaycovalServiceDI {
     fun getModule(): Module {
         return module {
+            viewModel { BaseViewModel() }
+            single { BaseRepository<Class<*>>(get()) }
             single { create<PokemonAPI>(get()) }
+            single { create<DetailPokemonAPI>(get()) }
         }
     }
 }

@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pocmodulo"
         tools:replace="android:label,android:allowBackup">
-        <activity android:name="com.example.pokemon.presentation.ListPokemonActivity"
+        <activity
+            android:name="com.example.pokemon.presentation.PokemonActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -23,6 +24,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.details.presentation.DetailPokemonActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.example.daycoval_service.presentation.BaseActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name="com.example.photogallery.presentation.PhotoGalleryActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

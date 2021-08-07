@@ -1,8 +1,8 @@
 package com.example.pokemon.domain.usecase
 
-import com.example.daycoval_service.model.ServiceErrorModel
+import com.example.daycoval_service.data.model.ServiceErrorModel
 import com.example.pokemon.domain.repository.PokemonRepository
-import com.example.daycoval_service.model.PokemonDTO
+import com.example.daycoval_service.data.model.PokemonDTO
 
 class PokemonUseCaseImpl(private val repository: PokemonRepository): PokemonUseCase {
     override suspend fun getPokemon(
