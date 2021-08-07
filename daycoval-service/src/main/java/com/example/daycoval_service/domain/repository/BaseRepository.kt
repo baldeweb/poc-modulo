@@ -1,13 +1,62 @@
 package com.example.daycoval_service.domain.repository
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.example.daycoval_service.BuildConfig
 import com.example.daycoval_service.data.model.ServiceErrorModel
+import com.example.daycoval_service.presentation.adapter.CoroutineCallAdapterFactory
+import com.example.daycoval_service.presentation.constants.Constants
+import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
+import java.util.concurrent.TimeUnit
 
-open class BaseRepository<T>(private val api: T) {
+open class BaseRepository<T>(val context: Context) {
     private val HTTP_OK = 200
     private val HTTP_UNAUTHORIZED = 401
     private val HTTP_INTERNAL_SERVER_ERROR = 500
+
+    protected inline fun <reified T> create(): T {
+        val okHttpClient = getOkHttpClient(context, Constants.TIMEOUT)
+        val retrofit = Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder().setLenient().create()
+                )
+            )
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .client(okHttpClient.build())
+            .build()
+
+        return retrofit.create(T::class.java)
+    }
+
+    fun getOkHttpClient(
+        context: Context,
+        timeout: Long
+    ): OkHttpClient.Builder {
+        val okHttpClient: OkHttpClient.Builder = OkHttpClient.Builder()
+        okHttpClient.connectTimeout(timeout, TimeUnit.SECONDS)
+        okHttpClient.readTimeout(timeout, TimeUnit.SECONDS)
+        okHttpClient.writeTimeout(timeout, TimeUnit.SECONDS)
+
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level =
+            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
+            else HttpLoggingInterceptor.Level.NONE
+
+        okHttpClient.addInterceptor(interceptor)
+
+        if (BuildConfig.DEBUG)
+            okHttpClient.addInterceptor(ChuckerInterceptor.Builder(context).build())
+
+        return okHttpClient
+    }
 
     protected fun <T> serviceCaller(
         api: Response<T>,
