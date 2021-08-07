@@ -6,6 +6,7 @@ import com.example.daycoval_service.BuildConfig
 import com.example.daycoval_service.data.model.ServiceErrorModel
 import com.example.daycoval_service.presentation.adapter.CoroutineCallAdapterFactory
 import com.example.daycoval_service.presentation.constants.Constants
+import com.example.daycoval_service.presentation.constants.Constants.BASE_URL
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,7 +24,7 @@ open class BaseRepository<T>(val context: Context) {
     protected inline fun <reified T> create(): T {
         val okHttpClient = getOkHttpClient(context, Constants.TIMEOUT)
         val retrofit = Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(
                 GsonConverterFactory.create(
                     GsonBuilder().setLenient().create()
