@@ -9,7 +9,6 @@ class PokemonUseCaseImpl(private val repository: PokemonRepository): PokemonUseC
         onSuccess: (PokemonDTO) -> Unit,
         onError: (ServiceErrorModel) -> Unit
     ) {
-        //  TODO: realizar uma verificacao de online/offline
         repository.getPokemon(onSuccess, onError)
     }
 }

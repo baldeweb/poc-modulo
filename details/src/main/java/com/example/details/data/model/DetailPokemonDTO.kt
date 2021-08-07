@@ -1,6 +1,5 @@
 package com.example.details.data.model
 
-import com.example.shared_common.data.model.Sprites
 import com.google.gson.annotations.SerializedName
 
 data class DetailPokemonDTO (
@@ -27,7 +26,7 @@ data class DetailPokemonDTO (
     @SerializedName("pokemon")
     var pokemon: KeyValueNameUrl? = null,
     @SerializedName("sprites")
-    var sprites: Sprites? = null,
+    var sprites: Any? = null,
     @SerializedName("types")
     var types: ArrayList<TypeInfo>? = arrayListOf(),
     @SerializedName("version_group")
