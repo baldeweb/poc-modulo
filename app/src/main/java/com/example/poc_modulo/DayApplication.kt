@@ -6,7 +6,6 @@ import com.example.details.DetailPokemonDI
 import com.example.photogallery.PhotoGalleryDI
 import com.example.pokemon.PokemonDI
 import com.example.shared_common.SharedCommonDI
-import com.example.shared_common.data.dao.AppDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -32,7 +31,5 @@ class DayApplication: Application() {
             androidContext(this@DayApplication)
             modules(moduleList)
         }
-
-        AppDatabase.getDatabase(applicationContext)
     }
 }

@@ -28,11 +28,4 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), KoinCompon
             return Any() as KClass<T>
         }
     }
-
-    fun navigateTo(clazzToGo: Class<*>, bundle: Bundle? = null) {
-        startActivity(Intent(this, clazzToGo).apply {
-            if (bundle != null)
-                putExtras(bundle)
-        })
-    }
 }

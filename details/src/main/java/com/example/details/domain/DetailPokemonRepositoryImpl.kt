@@ -1,9 +1,10 @@
-package com.example.details.domain.repository
+package com.example.details.domain
 
 import android.content.Context
 import com.example.daycoval_service.domain.repository.BaseRepository
 import com.example.shared_common.data.DetailPokemonAPI
 import com.example.details.data.model.DetailPokemonDTO
+import com.example.details.domain.DetailPokemonRepository
 import com.example.shared_common.data.model.ServiceErrorModel
 
 class DetailPokemonRepositoryImpl(

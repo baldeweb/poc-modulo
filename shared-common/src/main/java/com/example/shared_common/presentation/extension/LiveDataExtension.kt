@@ -1,4 +1,4 @@
-package com.example.daycoval_service
+package com.example.shared_common.presentation.extension
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
