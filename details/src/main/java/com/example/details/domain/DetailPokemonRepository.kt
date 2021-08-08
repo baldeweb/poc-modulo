@@ -1,6 +1,6 @@
 package com.example.details.domain
 
-import com.example.details.data.model.DetailPokemonDTO
+import com.example.shared_common.data.model.DetailPokemonDTO
 import com.example.shared_common.data.model.ServiceErrorModel
 
 interface DetailPokemonRepository {

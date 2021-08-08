@@ -1,4 +1,4 @@
-package com.example.details.data.model
+package com.example.shared_common.data.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -4,7 +4,6 @@ import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.daycoval_service.BuildConfig
 import com.example.shared_common.data.model.ServiceErrorModel
-import com.example.shared_common.presentation.adapter.CoroutineCallAdapterFactory
 import com.example.shared_common.presentation.constants.Constants
 import com.example.shared_common.presentation.constants.Constants.BASE_URL
 import com.google.gson.GsonBuilder
@@ -30,7 +29,6 @@ open class BaseRepository<T>(val context: Context) {
                     GsonBuilder().setLenient().create()
                 )
             )
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(okHttpClient.build())
             .build()
 
