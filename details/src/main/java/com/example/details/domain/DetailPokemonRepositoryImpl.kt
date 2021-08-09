@@ -14,7 +14,7 @@ class DetailPokemonRepositoryImpl(
         onSuccess: (DetailPokemonDTO) -> Unit,
         onError: (ServiceErrorModel) -> Unit
     ) {
-        serviceCaller(create<DetailPokemonAPI>().getPokemonDetail(endpoint).await(), {
+        serviceCaller(create<DetailPokemonAPI>().getPokemonDetail(endpoint), {
             onSuccess.invoke(it)
         }, {
             onError.invoke(it)

@@ -1,6 +1,5 @@
 package com.example.shared_common.presentation
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shared_common.databinding.ActivityBaseBinding

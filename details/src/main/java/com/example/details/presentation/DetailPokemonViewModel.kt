@@ -10,9 +10,7 @@ class DetailPokemonViewModel(
     private val repository: DetailPokemonRepository
 ): BaseViewModel() {
     fun getPokemonDetail(endpoint: String) {
-        Log.d("LOG", "DetailPokemonViewModel() >> checkpoint")
-        Log.d("LOG", "getPokemonDetail(): endpoint >> $endpoint")
-        viewModelScope.launch(webServiceException) {
+        viewModelScope.launch {
             repository.getPokemonDetail(endpoint, {
                 Log.d("LOG", "getPokemonDetail(): $it")
             }, {

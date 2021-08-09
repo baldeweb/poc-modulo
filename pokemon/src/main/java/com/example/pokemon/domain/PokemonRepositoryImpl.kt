@@ -6,6 +6,7 @@ import com.example.pokemon.domain.PokemonRepository
 import com.example.shared_common.data.PokemonAPI
 import com.example.shared_common.data.model.PokemonDTO
 import com.example.shared_common.data.model.ServiceErrorModel
+import retrofit2.Response
 
 class PokemonRepositoryImpl(
     context: Context
@@ -14,7 +15,7 @@ class PokemonRepositoryImpl(
         onSuccess: (PokemonDTO) -> Unit,
         onError: (ServiceErrorModel) -> Unit
     ) {
-        serviceCaller(create<PokemonAPI>().getPokemon().await(), {
+        serviceCaller(create<PokemonAPI>().getPokemon(), {
             onSuccess.invoke(it)
         }, {
             onError.invoke(it)

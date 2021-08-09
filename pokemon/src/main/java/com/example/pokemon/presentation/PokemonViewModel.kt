@@ -18,7 +18,7 @@ class PokemonViewModel(
     var pokemon: LiveData<PokemonDTO> = _pokemon
 
     fun getPokemon() {
-        viewModelScope.launch(webServiceException) {
+        viewModelScope.launch {
             repository.getPokemon({
                 _pokemon.value = it
             }, {
@@ -28,6 +28,6 @@ class PokemonViewModel(
     }
 
     fun redirectDetailPokemon() {
-        navigation.redirectDetailPokemon("pokemon-form/4/")
+        navigation.redirectDetailPokemon(pokemon.value?.forms?.get(0)?.url ?: "")
     }
 }
