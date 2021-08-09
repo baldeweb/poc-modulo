@@ -18,12 +18,12 @@ class PokemonViewModel(
     var pokemon: LiveData<PokemonDTO> = _pokemon
 
     fun getPokemon() {
-        viewModelScope.launch {
-            repository.getPokemon({
-                _pokemon.value = it
-            }, {
-                Log.d("LOG", "DEU RUIIIM: (${it.httpCode}) - ${it.throwable}")
-            })
+        Log.d("LOG", "SHOW LOADING")
+        viewModelScope.launch(webServiceException) {
+            val response = repository.getPokemon()
+            _pokemon.value = response
+            Log.d("LOG", "getPokemon(): $response")
+            Log.d("LOG", "DISMISS LOADING")
         }
     }
 

@@ -8,14 +8,13 @@ import kotlinx.coroutines.launch
 
 class DetailPokemonViewModel(
     private val repository: DetailPokemonRepository
-): BaseViewModel() {
+) : BaseViewModel() {
     fun getPokemonDetail(endpoint: String) {
-        viewModelScope.launch {
-            repository.getPokemonDetail(endpoint, {
-                Log.d("LOG", "getPokemonDetail(): $it")
-            }, {
-                Log.d("LOG", "DEU RUIIIM: (${it.httpCode}) - ${it.throwable}")
-            })
+        Log.d("LOG", "SHOW LOADING")
+        viewModelScope.launch(webServiceException) {
+            val response = repository.getPokemonDetail(endpoint)
+            Log.d("LOG", "getPokemonDetail(): $response")
+            Log.d("LOG", "DISMISS LOADING")
         }
     }
 }
