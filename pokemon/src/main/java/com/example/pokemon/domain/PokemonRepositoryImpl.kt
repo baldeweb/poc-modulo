@@ -2,11 +2,10 @@ package com.example.pokemon.domain
 
 import android.content.Context
 import com.example.daycoval_service.domain.repository.BaseRepository
-import com.example.pokemon.domain.PokemonRepository
+import com.example.shared_common.domain.PokemonRepository
 import com.example.shared_common.data.PokemonAPI
 import com.example.shared_common.data.model.PokemonDTO
 import com.example.shared_common.data.model.ServiceErrorModel
-import retrofit2.Response
 
 class PokemonRepositoryImpl(
     context: Context

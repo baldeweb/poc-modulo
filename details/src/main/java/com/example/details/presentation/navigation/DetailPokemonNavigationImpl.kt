@@ -1,10 +1,11 @@
-package com.example.details.presentation
+package com.example.details.presentation.navigation
 
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.example.details.presentation.DetailPokemonActivity
 import com.example.shared_common.presentation.BaseNavigation
-import com.example.shared_common.presentation.DetailPokemonNavigation
+import com.example.shared_common.presentation.navigation.DetailPokemonNavigation
 
 class DetailPokemonNavigationImpl(
     private val context: Context

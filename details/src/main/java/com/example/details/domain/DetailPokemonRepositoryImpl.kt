@@ -5,6 +5,7 @@ import com.example.daycoval_service.domain.repository.BaseRepository
 import com.example.shared_common.data.DetailPokemonAPI
 import com.example.shared_common.data.model.DetailPokemonDTO
 import com.example.shared_common.data.model.ServiceErrorModel
+import com.example.shared_common.domain.DetailPokemonRepository
 
 class DetailPokemonRepositoryImpl(
     context: Context

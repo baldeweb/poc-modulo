@@ -1,4 +1,4 @@
-package com.example.pokemon.domain
+package com.example.shared_common.domain
 
 import com.example.shared_common.data.model.PokemonDTO
 import com.example.shared_common.data.model.ServiceErrorModel

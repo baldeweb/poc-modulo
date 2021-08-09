@@ -4,10 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.pokemon.domain.PokemonRepository
+import com.example.shared_common.domain.PokemonRepository
 import com.example.shared_common.data.model.PokemonDTO
 import com.example.shared_common.presentation.BaseViewModel
-import com.example.shared_common.presentation.DetailPokemonNavigation
+import com.example.shared_common.presentation.navigation.DetailPokemonNavigation
 import kotlinx.coroutines.launch
 
 class PokemonViewModel(

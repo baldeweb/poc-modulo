@@ -2,7 +2,7 @@ package com.example.details.presentation
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
-import com.example.details.domain.DetailPokemonRepository
+import com.example.shared_common.domain.DetailPokemonRepository
 import com.example.shared_common.presentation.BaseViewModel
 import kotlinx.coroutines.launch
 
