@@ -15,18 +15,17 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
 
     buildTypes {
         debug {
             firebaseAppDistribution {
                 //serviceCredentialsFile = "$rootDir/app/poc-modulo-322501-b7d38a59843b.json"
                 releaseNotesFile = "$rootDir/app/release_notes.txt"
-                testers="gabriellimaxd6@gmail.com"
+                testers=""
                 // groups = "xxx"
             }
 
@@ -40,19 +39,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
-            firebaseAppDistribution {
-                //serviceCredentialsFile = "$rootDir/app/poc-modulo-322501-b7d38a59843b.json"
-                releaseNotesFile = "$rootDir/app/release_notes.txt"
-                testers="gabriellimaxd6@gmail.com"
-                // groups = "xxx"
-            }
-
-            task buildAndPublishApkRelease() {
-                dependsOn 'updateReleaseNotes'
-                dependsOn 'assembleRelease'
-                dependsOn 'appDistributionUploadRelease'
-            }
         }
     }
 
