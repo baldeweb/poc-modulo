@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -45,6 +46,10 @@ dependencies {
 
     //  Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    //  Firebase
+    implementation platform('com.google.firebase:firebase-bom:28.3.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     // Google Components:
     implementation "androidx.cardview:cardview:$card_view_version"

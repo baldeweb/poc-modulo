@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "32788606712",
+    "project_id": "poc-modulo",
+    "storage_bucket": "poc-modulo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32788606712:android:0c3c424a6ececb98b0d50d",
+        "android_client_info": {
+          "package_name": "com.example.poc_modulo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32788606712-pkuo2sfeokg30pgnhauv3lrbkjsgr2j9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.poc_modulo",
+            "certificate_hash": "d3c31b0d0d21a45795116ad572b360d9a889051e"
+          }
+        },
+        {
+          "client_id": "32788606712-43979t5nfe2j8skp362qutpgv00be4cq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKhIskb_0uYwduSmhXgd4AS6kVwIo47GI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32788606712-43979t5nfe2j8skp362qutpgv00be4cq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
