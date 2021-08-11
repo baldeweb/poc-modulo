@@ -22,18 +22,18 @@ android {
 
     buildTypes {
         debug {
-            firebaseAppDistribution {
-                serviceCredentialsFile = "$rootDir/poc-modulo-7a5ee1dabc8b.json"
-                releaseNotesFile = "$rootDir/release_notes.txt"
-                testers="wallacecorin@gmail.com"
-                // groups = "group-name-here"
-            }
-
-            task buildAndPublishApkDebug() {
-                dependsOn 'updateReleaseNotes'
-                dependsOn 'assembleDebug'
-                dependsOn 'appDistributionUploadDebug'
-            }
+//            firebaseAppDistribution {
+//                serviceCredentialsFile = "$rootDir/poc-modulo-7a5ee1dabc8b.json"
+//                releaseNotesFile = "$rootDir/release_notes.txt"
+//                testers="wallacecorin@gmail.com"
+//                // groups = "group-name-here"
+//            }
+//
+//            task buildAndPublishApkDebug() {
+//                dependsOn 'updateReleaseNotes'
+//                dependsOn 'assembleDebug'
+//                dependsOn 'appDistributionUploadDebug'
+//            }
         }
 
         release {

@@ -1,0 +1,20 @@
+default_platform(:android)
+
+platform :android do
+    desc "Teste do Fastlane"
+    lane :distribute do
+        gradle(
+          tasks: ["clean", "assemble"],
+          build_type: "Debug"
+        )
+
+        firebase_app_distribution(
+            app: "1:32788606712:android:0c3c424a6ececb98b0d50d",
+            firebase_cli_token: "4/1AX4XfWipBXeYWxKe2jMvF9gBbfAZ7iLa_39XpgE1dt9NzfuVgnUNOQWW0nA",
+            service_credentials_file: "./poc-modulo-7a5ee1dabc8b.json",
+            testers: "wallacecorin@gmail.com",
+            release_notes_file: "./release-notes.txt",
+            debug: true
+        )
+    end
+end
