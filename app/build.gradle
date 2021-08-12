@@ -15,25 +15,14 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         debug {
-//            firebaseAppDistribution {
-//                serviceCredentialsFile = "$rootDir/poc-modulo-7a5ee1dabc8b.json"
-//                releaseNotesFile = "$rootDir/release_notes.txt"
-//                testers="wallacecorin@gmail.com"
-//                // groups = "group-name-here"
-//            }
-//
-//            task buildAndPublishApkDebug() {
-//                dependsOn 'updateReleaseNotes'
-//                dependsOn 'assembleDebug'
-//                dependsOn 'appDistributionUploadDebug'
-//            }
+
         }
 
         release {
