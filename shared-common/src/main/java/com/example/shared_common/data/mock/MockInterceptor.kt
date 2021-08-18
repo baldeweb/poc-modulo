@@ -1,7 +1,8 @@
-package com.example.shared_common.data.model.mock
+package com.example.shared_common.data.mock
 
 import android.content.Context
 import android.content.res.AssetManager
+import com.example.shared_common.data.model.mock.LoadMock
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
@@ -10,8 +11,10 @@ import okhttp3.ResponseBody.Companion.toResponseBody
 import retrofit2.Invocation
 import java.io.InputStream
 
-class MockInterceptor(val context: Context,
-                      private val mockAllEnable: Boolean) : Interceptor {
+class MockInterceptor(
+    val context: Context,
+    private val mockAllEnable: Boolean
+) : Interceptor {
 
     private fun readFile(fileName: String): String {
         val manager: AssetManager = context.assets
@@ -31,15 +34,19 @@ class MockInterceptor(val context: Context,
                     LoadMock::class -> {
                         (annotation as LoadMock).apply {
                             if (mockAllEnable) {
-                                val response = readFile("mocks$path")
+                                val response = readFile("mocks/$jsonFileName")
                                 return chain.proceed(chain.request())
                                     .newBuilder()
                                     .code(200)
                                     .protocol(Protocol.HTTP_2)
                                     .message(response)
                                     .body(
-                                        response.toByteArray()
-                                            .toResponseBody("application/json".toMediaTypeOrNull())
+                                        response
+                                            .toByteArray()
+                                            .toResponseBody(
+                                                "application/json"
+                                                    .toMediaTypeOrNull()
+                                            )
                                     )
                                     .addHeader("content-type", "application/json")
                                     .build()

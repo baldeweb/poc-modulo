@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.details_public.presentation.DetailPokemonNavigation
 import com.example.pokemon_public.domain.PokemonRepository
-import com.example.pokemon_public.data.model.PokemonDTO
+import com.example.pokemon_public.model.PokemonDTO
 import com.example.shared_common.presentation.BaseViewModel
 import kotlinx.coroutines.launch
 

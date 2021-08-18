@@ -1,4 +1,4 @@
-package com.example.pokemon_public.data.model
+package com.example.pokemon_public.model
 
 import com.google.gson.annotations.SerializedName
 

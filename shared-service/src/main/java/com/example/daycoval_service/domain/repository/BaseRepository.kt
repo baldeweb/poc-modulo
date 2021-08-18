@@ -4,7 +4,7 @@ import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.daycoval_service.BuildConfig
 import com.example.shared_common.data.model.ServiceErrorModel
-import com.example.shared_common.data.model.mock.MockInterceptor
+import com.example.shared_common.data.mock.MockInterceptor
 import com.example.shared_common.presentation.constants.Constants
 import com.example.shared_common.presentation.constants.Constants.BASE_URL
 import com.google.gson.GsonBuilder
