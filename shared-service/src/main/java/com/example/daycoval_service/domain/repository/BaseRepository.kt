@@ -4,6 +4,7 @@ import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.daycoval_service.BuildConfig
 import com.example.shared_common.data.model.ServiceErrorModel
+import com.example.shared_common.data.model.mock.MockInterceptor
 import com.example.shared_common.presentation.constants.Constants
 import com.example.shared_common.presentation.constants.Constants.BASE_URL
 import com.google.gson.GsonBuilder
@@ -15,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-open class BaseRepository<T>(val context: Context) {
+open class BaseRepository<T>(val context: Context, private val shouldStartMock: Boolean? = null) {
     private val HTTP_OK = 200
     private val HTTP_UNAUTHORIZED = 401
     private val HTTP_INTERNAL_SERVER_ERROR = 500
@@ -51,8 +52,10 @@ open class BaseRepository<T>(val context: Context) {
 
         okHttpClient.addInterceptor(interceptor)
 
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             okHttpClient.addInterceptor(ChuckerInterceptor.Builder(context).build())
+            okHttpClient.addInterceptor(MockInterceptor(context, shouldStartMock ?: false))
+        }
 
         return okHttpClient
     }
