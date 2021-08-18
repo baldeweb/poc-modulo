@@ -1,7 +1,9 @@
 rootProject.name = "poc-modulo"
 include ':app'
-include ':details'
+include ':detail-private'
+include ':detail-public'
 include ':photo-gallery'
-include ':pokemon'
+include ':pokemon-private'
+include ':pokemon-public'
 include ':shared-service'
 include ':shared-common'

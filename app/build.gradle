@@ -93,8 +93,10 @@ dependencies {
 
     // Projects
     implementation project(':shared-service')
-    implementation project(':details')
+    implementation project(':detail-private')
+    implementation project(':detail-public')
     implementation project(':photo-gallery')
-    implementation project(':pokemon')
+    implementation project(':pokemon-private')
+    implementation project(':pokemon-public')
     implementation project(':shared-common')
 }

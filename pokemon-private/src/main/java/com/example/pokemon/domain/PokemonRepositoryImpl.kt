@@ -1,0 +1,13 @@
+package com.example.pokemon.domain
+
+import android.content.Context
+import com.example.daycoval_service.domain.repository.BaseRepository
+import com.example.pokemon_public.data.PokemonAPI
+import com.example.pokemon_public.data.model.PokemonDTO
+import com.example.pokemon_public.domain.PokemonRepository
+
+class PokemonRepositoryImpl(
+    context: Context
+) : BaseRepository<PokemonAPI>(context), PokemonRepository {
+    override suspend fun getPokemon(): PokemonDTO? = create<PokemonAPI>().getPokemon().body()
+}

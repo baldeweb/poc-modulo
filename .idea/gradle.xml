@@ -11,9 +11,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/details" />
+            <option value="$PROJECT_DIR$/detail-private" />
+            <option value="$PROJECT_DIR$/detail-public" />
             <option value="$PROJECT_DIR$/photo-gallery" />
-            <option value="$PROJECT_DIR$/pokemon" />
+            <option value="$PROJECT_DIR$/pokemon-private" />
+            <option value="$PROJECT_DIR$/pokemon-public" />
             <option value="$PROJECT_DIR$/shared-common" />
             <option value="$PROJECT_DIR$/shared-service" />
           </set>
