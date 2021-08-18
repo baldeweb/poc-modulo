@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="poc-modulo.app" target="1.8" />
+      <module name="poc-modulo.detail-private" target="1.8" />
+      <module name="poc-modulo.detail-public" target="1.8" />
+      <module name="poc-modulo.photo-gallery" target="1.8" />
+      <module name="poc-modulo.pokemon-private" target="1.8" />
+      <module name="poc-modulo.shared-common" target="1.8" />
+      <module name="poc-modulo.shared-service" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
