@@ -9,6 +9,7 @@ import com.example.details_public.domain.DetailPokemonRepository
 class DetailPokemonRepositoryImpl(
     context: Context
 ) : BaseRepository<DetailPokemonAPI>(context), DetailPokemonRepository {
+    //override suspend fun getPokemonDetail(endpoint: String) = caller(DetailPokemonAPI::getPokemonDetail)
     override suspend fun getPokemonDetail(endpoint: String): DetailPokemonDTO? =
         create<DetailPokemonAPI>().getPokemonDetail(endpoint).body()
 }

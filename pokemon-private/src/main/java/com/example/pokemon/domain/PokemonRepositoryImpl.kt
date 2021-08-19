@@ -9,5 +9,5 @@ import com.example.pokemon_public.domain.PokemonRepository
 class PokemonRepositoryImpl(
     context: Context
 ) : BaseRepository<PokemonAPI>(context), PokemonRepository {
-    override suspend fun getPokemon(): PokemonDTO? = create<PokemonAPI>().getPokemon().body()
+    override suspend fun getPokemon() = caller(PokemonAPI::getPokemon)
 }

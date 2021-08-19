@@ -21,6 +21,10 @@ open class BaseRepository<T>(val context: Context, private val shouldStartMock: 
     private val HTTP_UNAUTHORIZED = 401
     private val HTTP_INTERNAL_SERVER_ERROR = 500
 
+    protected suspend inline fun <reified T, E> caller(
+        crossinline response: suspend (T) -> Response<E>
+    ): E? = response.invoke(this.create()).body()
+
     protected inline fun <reified T> create(): T {
         val okHttpClient = getOkHttpClient(context, Constants.TIMEOUT)
         val retrofit = Retrofit.Builder()
