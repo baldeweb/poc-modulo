@@ -14,12 +14,18 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
+import java.lang.Exception
 import java.util.concurrent.TimeUnit
+import kotlin.reflect.KSuspendFunction2
 
 open class BaseRepository<T>(val context: Context, private val shouldStartMock: Boolean? = null) {
     private val HTTP_OK = 200
     private val HTTP_UNAUTHORIZED = 401
     private val HTTP_INTERNAL_SERVER_ERROR = 500
+
+    protected inline fun <reified E> caller(
+        response: Response<E>
+    ): E? = response.body()
 
     protected suspend inline fun <reified T, E> caller(
         crossinline response: suspend (T) -> Response<E>
