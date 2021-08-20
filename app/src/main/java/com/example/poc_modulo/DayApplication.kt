@@ -3,7 +3,6 @@ package com.example.poc_modulo
 import android.app.Application
 import com.example.daycoval_service.DaycovalServiceDI
 import com.example.details.DetailPokemonDI
-import com.example.photogallery.PhotoGalleryDI
 import com.example.pokemon.PokemonDI
 import com.example.shared_common.SharedCommonDI
 import org.koin.android.ext.koin.androidContext
@@ -22,7 +21,6 @@ class DayApplication: Application() {
         val moduleList = listOf(
             DaycovalServiceDI().getModule(),
             DetailPokemonDI().getModule(),
-            PhotoGalleryDI().getModule(),
             PokemonDI().getModule(),
             SharedCommonDI().getModule()
         )

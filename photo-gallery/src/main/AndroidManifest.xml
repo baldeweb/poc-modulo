@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.photogallery">
-
-    <application>
-        <activity android:name=".presentation.PhotoGalleryActivity"></activity>
-    </application>
-
-</manifest>

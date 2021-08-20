@@ -95,8 +95,8 @@ dependencies {
     implementation project(':shared-service')
     implementation project(':detail-private')
     implementation project(':detail-public')
-    implementation project(':photo-gallery')
     implementation project(':pokemon-private')
     implementation project(':pokemon-public')
     implementation project(':shared-common')
+    implementation project(':unit-test')
 }
