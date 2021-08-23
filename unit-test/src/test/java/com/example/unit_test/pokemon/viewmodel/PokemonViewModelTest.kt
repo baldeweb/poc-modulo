@@ -1,14 +1,15 @@
-package com.example.unit_test.pokemon
+package com.example.unit_test.pokemon.viewmodel
 
+import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
 import com.example.details_public.presentation.DetailPokemonNavigation
 import com.example.pokemon.presentation.PokemonViewModel
 import com.example.pokemon_public.domain.PokemonRepository
 import com.example.pokemon_public.model.PokemonDTO
 import com.example.unit_test.TestCoroutineRule
 import com.example.unit_test.getOrAwaitValueTest
-import junit.framework.TestCase.assertNotNull
+import com.example.unit_test.pokemon.repository.FakePokemonRepository
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Rule
@@ -18,7 +19,6 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
-import retrofit2.Response
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
@@ -33,26 +33,32 @@ class PokemonViewModelTest {
     @Mock
     private lateinit var navigation: DetailPokemonNavigation
 
-    @Mock
-    private lateinit var repository: PokemonRepository
+    private lateinit var fakeRepository: FakePokemonRepository
 
-    @Mock
-    private lateinit var apiPokemonObserver: PokemonDTO
+    private lateinit var viewModel: PokemonViewModel
 
     @Before
     fun setUp() {
-
+        fakeRepository = spy(FakePokemonRepository())
+        viewModel = PokemonViewModel(navigation, fakeRepository)
     }
 
     @Test
-    fun getPokemonNOTnull() {
-        val mockDTO = mock(PokemonDTO::class.java)
+    fun `get pokemon MAY BE NOT null`() {
         testCoroutineRule.runBlockingTest {
-            doReturn(mockDTO).`when`(repository).getPokemon()
+            viewModel.getPokemon()
+            val pokemonValue = viewModel.pokemon.getOrAwaitValueTest()
+            assertThat(pokemonValue).isNotNull()
+        }
+    }
 
-            val viewModel = PokemonViewModel(navigation, repository)
-            val pokemonValue = viewModel.pokemon.value
-            assertNotNull(pokemonValue)
+    @Test
+    fun `get pokemon MAY BE null`() {
+        testCoroutineRule.runBlockingTest {
+            `when`(fakeRepository.getPokemon()).thenReturn(null)
+            viewModel.getPokemon()
+            val pokemonValue = viewModel.pokemon.getOrAwaitValueTest()
+            assertThat(pokemonValue).isNull()
         }
     }
 }
