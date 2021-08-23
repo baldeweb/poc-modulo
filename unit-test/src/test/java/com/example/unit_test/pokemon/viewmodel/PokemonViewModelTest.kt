@@ -1,11 +1,8 @@
 package com.example.unit_test.pokemon.viewmodel
 
-import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.details_public.presentation.DetailPokemonNavigation
 import com.example.pokemon.presentation.PokemonViewModel
-import com.example.pokemon_public.domain.PokemonRepository
-import com.example.pokemon_public.model.PokemonDTO
 import com.example.unit_test.TestCoroutineRule
 import com.example.unit_test.getOrAwaitValueTest
 import com.example.unit_test.pokemon.repository.FakePokemonRepository
@@ -17,7 +14,8 @@ import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.spy
 import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
