@@ -1,8 +1,10 @@
 package com.example.shared_common.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shared_common.databinding.ActivityBaseBinding
+import com.example.shared_common.presentation.extension.observeNonNull
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.component.KoinComponent
 import java.lang.reflect.ParameterizedType
@@ -16,6 +18,14 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), KoinCompon
         super.onCreate(savedInstanceState)
         binding = ActivityBaseBinding.inflate(layoutInflater)
         super.setContentView(binding.root)
+
+        initViewModels()
+    }
+
+    private fun initViewModels() {
+        viewModel.errorResponse.observeNonNull(this) {
+            Log.d("LOG", "[ERRO API]: ${it.httpCode} - ${it.throwable}")
+        }
     }
 
     @Suppress("UNCHECKED_CAST")

@@ -1,6 +1,5 @@
 package com.example.pokemon.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -18,9 +17,10 @@ class PokemonViewModel(
     var pokemon: LiveData<PokemonDTO> = _pokemon
 
     fun getPokemon() {
-        viewModelScope.launch(webServiceException) {
-            val response = repository.getPokemon()
-            _pokemon.value = response
+        viewModelScope.launch {
+            serviceCaller(repository.getPokemon()) {
+                _pokemon.value = it
+            }
         }
     }
 

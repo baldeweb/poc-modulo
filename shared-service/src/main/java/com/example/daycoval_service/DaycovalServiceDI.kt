@@ -8,7 +8,7 @@ import kotlin.reflect.KClass
 class DaycovalServiceDI {
     fun getModule(): Module {
         return module {
-            single { BaseRepository<KClass<*>>(get()) }
+            single { BaseRepository<KClass<*>>(get(), get()) }
         }
     }
 }
