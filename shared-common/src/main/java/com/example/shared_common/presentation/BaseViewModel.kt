@@ -13,15 +13,39 @@ open class BaseViewModel : ViewModel(), KoinComponent {
     private var _errorResponse = MutableLiveData<ServiceErrorModel>()
     var errorResponse: LiveData<ServiceErrorModel> = _errorResponse
 
-    protected suspend fun <T> serviceCaller(api: Response<T>?, onExecute: suspend (T) -> Unit) {
-        if (api?.code() == HTTP_OK) {
-            try {
-                api.body()?.let { onExecute.invoke(it) }
-            } catch (exception: Exception) {
+    protected suspend fun <T> serviceCaller(
+        api: Response<T>?,
+        onExecute: suspend (T) -> Unit
+    ) {
+        serviceCaller(api, onExecute)
+    }
+
+    protected suspend fun <T> serviceCaller(
+        api: Response<T>?,
+        onExecute: suspend (T) -> Unit,
+        onResponseError: ((ServiceErrorModel) -> Unit)? = null
+    ) {
+        when {
+            api?.code() == HTTP_OK -> {
+                try {
+                    api.body()?.let { onExecute.invoke(it) }
+                } catch (exception: Exception) {
+                    errorResponse(api)
+                }
+            }
+            onResponseError != null -> {
+                val errorSerialized = api?.errorBody()?.charStream()?.readLines()?.get(0).toString()
+                onResponseError.invoke(
+                    ServiceErrorModel(
+                        api?.code() ?: HTTP_INTERNAL_ERROR,
+                        Throwable(errorSerialized)
+                    )
+                )
+                return
+            }
+            else -> {
                 errorResponse(api)
             }
-        } else {
-            errorResponse(api)
         }
     }
 
