@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".DayApplication"
+        android:name=".PokemonApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pocmodulo"
-        tools:replace="android:label,android:allowBackup">
+        tools:replace="android:label,android:allowBackup"
+        tools:targetApi="n">
         <activity
             android:name="com.example.pokemon.presentation.PokemonActivity"
             android:launchMode="singleTask"

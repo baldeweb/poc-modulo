@@ -8,10 +8,10 @@ import com.example.shared_common.SharedCommonDI
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class DayApplication: Application() {
+class PokemonApplication: Application() {
 
     companion object {
-        var instance: DayApplication? = null
+        var instance: PokemonApplication? = null
     }
 
     override fun onCreate() {
@@ -26,7 +26,7 @@ class DayApplication: Application() {
         )
 
         startKoin {
-            androidContext(this@DayApplication)
+            androidContext(this@PokemonApplication)
             modules(moduleList)
         }
     }
