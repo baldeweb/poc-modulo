@@ -34,10 +34,6 @@
             android:name="com.example.shared_common.presentation.BaseActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="com.example.photogallery.presentation.PhotoGalleryActivity"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
