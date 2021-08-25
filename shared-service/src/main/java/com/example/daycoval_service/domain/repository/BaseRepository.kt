@@ -19,10 +19,6 @@ open class BaseRepository<T>(val context: Context, private val shouldStartMock: 
     private val HTTP_UNAUTHORIZED = 401
     private val HTTP_INTERNAL_SERVER_ERROR = 500
 
-//    protected inline fun <reified E> caller(
-//        response: Response<E>
-//    ): E? = response.body()
-
     protected suspend inline fun <reified T, E> caller(
         crossinline response: suspend (T) -> Response<E>
     ): Response<E> = response.invoke(this.create())
