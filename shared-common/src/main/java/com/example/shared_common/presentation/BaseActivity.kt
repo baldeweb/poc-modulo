@@ -2,6 +2,9 @@ package com.example.shared_common.presentation
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shared_common.databinding.ActivityBaseBinding
 import com.example.shared_common.presentation.extension.observeNonNull
@@ -22,9 +25,27 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), KoinCompon
         initViewModels()
     }
 
+    override fun setContentView(view: View?) {
+        binding.fmlBaseLayout.addView(view)
+    }
+
+    protected fun showLoading() {
+        if (binding.pgbLoading.visibility == GONE)
+            binding.pgbLoading.visibility = VISIBLE
+    }
+
+    protected fun dismissLoading() {
+        if (binding.pgbLoading.visibility == VISIBLE)
+            binding.pgbLoading.visibility = GONE
+    }
+
     private fun initViewModels() {
         viewModel.errorResponse.observeNonNull(this) {
             Log.d("LOG", "[ERRO API]: ${it.httpCode} - ${it.throwable}")
+        }
+
+        viewModel.shouldShowLoading.observeNonNull(this) {
+            if (it) showLoading() else dismissLoading()
         }
     }
 

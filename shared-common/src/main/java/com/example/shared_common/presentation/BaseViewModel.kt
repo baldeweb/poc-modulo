@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shared_common.data.model.ServiceErrorModel
+import com.example.shared_common.presentation.extension.SingleLiveEvent
+import kotlinx.coroutines.delay
 import org.koin.core.component.KoinComponent
 import retrofit2.Response
 import java.net.HttpURLConnection.*
@@ -13,20 +15,27 @@ open class BaseViewModel : ViewModel(), KoinComponent {
     private var _errorResponse = MutableLiveData<ServiceErrorModel>()
     var errorResponse: LiveData<ServiceErrorModel> = _errorResponse
 
+    private var _shouldShowLoading = MutableLiveData<Boolean>()
+    var shouldShowLoading: LiveData<Boolean> = _shouldShowLoading
+
     protected suspend fun <T> serviceCaller(
         api: Response<T>?,
         onExecute: suspend (T) -> Unit,
         onResponseError: ((ServiceErrorModel) -> Unit)? = null
     ) {
+        showLoading()
+
         when {
             api?.code() == HTTP_OK -> {
                 try {
                     api.body()?.let { onExecute.invoke(it) }
+                    dismissLoading()
                 } catch (exception: Exception) {
                     errorResponse(api)
                 }
             }
             onResponseError != null -> {
+                dismissLoading()
                 val errorSerialized = api?.errorBody()?.charStream()?.readLines()?.get(0).toString()
                 onResponseError.invoke(
                     ServiceErrorModel(
@@ -42,7 +51,17 @@ open class BaseViewModel : ViewModel(), KoinComponent {
         }
     }
 
+    protected fun showLoading() {
+        _shouldShowLoading.value = true
+    }
+
+    protected fun dismissLoading() {
+        _shouldShowLoading.value = false
+    }
+
     private fun <T> errorResponse(api: Response<T>?) {
+        dismissLoading()
+
         when (api?.code()) {
             HTTP_UNAUTHORIZED ->
                 _errorResponse.value =
