@@ -18,9 +18,9 @@ class PokemonViewModel(
 
     fun getPokemon() {
         viewModelScope.launch {
-            serviceCaller(repository.getPokemon()) {
+            serviceCaller(repository.getPokemon(), {
                 _pokemon.value = it
-            }
+            })
         }
     }
 

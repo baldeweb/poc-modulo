@@ -16,9 +16,9 @@ class DetailPokemonViewModel(
 
     fun getPokemonDetail(endpoint: String) {
         viewModelScope.launch {
-            serviceCaller(repository.getPokemonDetail(endpoint)) {
+            serviceCaller(repository.getPokemonDetail(endpoint), {
                 _pokemonDetail.value = it
-            }
+            })
         }
     }
 }

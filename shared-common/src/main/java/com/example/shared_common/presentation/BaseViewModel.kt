@@ -15,13 +15,6 @@ open class BaseViewModel : ViewModel(), KoinComponent {
 
     protected suspend fun <T> serviceCaller(
         api: Response<T>?,
-        onExecute: suspend (T) -> Unit
-    ) {
-        serviceCaller(api, onExecute)
-    }
-
-    protected suspend fun <T> serviceCaller(
-        api: Response<T>?,
         onExecute: suspend (T) -> Unit,
         onResponseError: ((ServiceErrorModel) -> Unit)? = null
     ) {
@@ -56,7 +49,7 @@ open class BaseViewModel : ViewModel(), KoinComponent {
                     ServiceErrorModel(HTTP_UNAUTHORIZED, Throwable("Nao autorizado"))
             in HTTP_INTERNAL_ERROR..599 ->
                 _errorResponse.value =
-                    ServiceErrorModel(HTTP_UNAUTHORIZED, Throwable("Server error"))
+                    ServiceErrorModel(HTTP_INTERNAL_ERROR, Throwable("Server error"))
             else -> {
                 val errorSerialized = api?.errorBody()?.charStream()?.readLines()?.get(0).toString()
                 _errorResponse.value = ServiceErrorModel(

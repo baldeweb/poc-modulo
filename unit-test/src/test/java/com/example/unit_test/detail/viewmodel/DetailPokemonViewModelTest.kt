@@ -17,6 +17,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Response
+import java.net.HttpURLConnection.HTTP_INTERNAL_ERROR
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
@@ -48,14 +49,36 @@ class DetailPokemonViewModelTest {
     }
 
     @Test
-    fun `get pokemon detail MAY BE null`() {
+    fun `get pokemon detail MAY BE get error`() {
         testCoroutineRule.runBlockingTest {
-//            `when`(fakeRepository.getPokemonDetail("")).thenReturn(Response.success(null))
-            val responseError = Response.error<DetailPokemonDTO>(500, mock(ResponseBody::class.java))
-            doReturn(responseError).`when`(fakeRepository).getPokemonDetail("")
+            doReturn(
+                Response.error<DetailPokemonDTO>(
+                    HTTP_INTERNAL_ERROR,
+                    mock(ResponseBody::class.java)
+                )
+            )
+                .`when`(fakeRepository).getPokemonDetail("")
+
             viewModel.getPokemonDetail("")
-            val pokemonDetailValue = viewModel.pokemonDetail.getOrAwaitValueTest()
-            Truth.assertThat(pokemonDetailValue)
+
+            val pokemonDetailValue = viewModel.pokemonDetail.value
+            Truth.assertThat(pokemonDetailValue).isNull()
+        }
+    }
+
+    @Test
+    fun `get pokemon detail MAY BE get error INTERNAL ERROR SERVER`() {
+        testCoroutineRule.runBlockingTest {
+            doReturn(
+                Response.error<DetailPokemonDTO>(
+                    HTTP_INTERNAL_ERROR,
+                    mock(ResponseBody::class.java)
+                )
+            ).`when`(fakeRepository).getPokemonDetail("")
+
+            viewModel.getPokemonDetail("")
+
+            Truth.assertThat(viewModel.errorResponse.value?.httpCode).isEqualTo(HTTP_INTERNAL_ERROR)
         }
     }
 }

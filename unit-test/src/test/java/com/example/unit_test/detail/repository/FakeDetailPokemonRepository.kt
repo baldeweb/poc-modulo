@@ -6,5 +6,5 @@ import retrofit2.Response
 
 class FakeDetailPokemonRepository : DetailPokemonRepository {
     override suspend fun getPokemonDetail(endpoint: String):
-            Response<DetailPokemonDTO> = Response.success(DetailPokemonDTO())
+            Response<DetailPokemonDTO>? = Response.success(DetailPokemonDTO())
 }
