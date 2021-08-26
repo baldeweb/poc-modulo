@@ -21,21 +21,22 @@ open class BaseViewModel : ViewModel(), KoinComponent {
     protected suspend fun <T> serviceCaller(
         api: Response<T>?,
         onExecute: suspend (T) -> Unit,
+        isSilentCall: Boolean? = null,
         onResponseError: ((ServiceErrorModel) -> Unit)? = null
     ) {
-        showLoading()
+        if (isSilentCall == null || isSilentCall == false) showLoading()
 
         when {
             api?.code() == HTTP_OK -> {
                 try {
                     api.body()?.let { onExecute.invoke(it) }
-                    dismissLoading()
+                    if (isSilentCall == null || isSilentCall == false) dismissLoading()
                 } catch (exception: Exception) {
                     errorResponse(api)
                 }
             }
             onResponseError != null -> {
-                dismissLoading()
+                if (isSilentCall == null || isSilentCall == false) dismissLoading()
                 val errorSerialized = api?.errorBody()?.charStream()?.readLines()?.get(0).toString()
                 onResponseError.invoke(
                     ServiceErrorModel(
