@@ -3,9 +3,12 @@ package com.example.shared_common.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.shared_common.data.model.ServiceErrorModel
 import com.example.shared_common.presentation.extension.SingleLiveEvent
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import retrofit2.Response
 import java.net.HttpURLConnection.*
@@ -21,22 +24,34 @@ open class BaseViewModel : ViewModel(), KoinComponent {
     protected suspend fun <T> serviceCaller(
         api: Response<T>?,
         onExecute: suspend (T) -> Unit,
-        isSilentCall: Boolean? = null,
         onResponseError: ((ServiceErrorModel) -> Unit)? = null
     ) {
-        if (isSilentCall == null || isSilentCall == false) showLoading()
+        showLoading()
+        resultHandling(api, onExecute, onResponseError)
+    }
 
+    protected suspend fun <T> serviceSilentCaller(
+        api: Response<T>?,
+        onExecute: suspend (T) -> Unit,
+        onResponseError: ((ServiceErrorModel) -> Unit)? = null
+    ) {
+        resultHandling(api, onExecute, onResponseError)
+    }
+
+    private suspend fun <T> resultHandling(api: Response<T>?,
+                               onExecute: suspend (T) -> Unit,
+                               onResponseError: ((ServiceErrorModel) -> Unit)? = null) {
         when {
             api?.code() == HTTP_OK -> {
                 try {
                     api.body()?.let { onExecute.invoke(it) }
-                    if (isSilentCall == null || isSilentCall == false) dismissLoading()
+                    dismissLoading()
                 } catch (exception: Exception) {
                     errorResponse(api)
                 }
             }
             onResponseError != null -> {
-                if (isSilentCall == null || isSilentCall == false) dismissLoading()
+                dismissLoading()
                 val errorSerialized = api?.errorBody()?.charStream()?.readLines()?.get(0).toString()
                 onResponseError.invoke(
                     ServiceErrorModel(
