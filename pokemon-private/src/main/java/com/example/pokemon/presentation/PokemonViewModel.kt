@@ -1,9 +1,13 @@
 package com.example.pokemon.presentation
 
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.details_public.presentation.DetailPokemonNavigation
+import com.example.navigation.Actions
+import com.example.navigation.Actions.openDetailPokemon
 import com.example.pokemon_public.domain.PokemonRepository
 import com.example.pokemon_public.model.PokemonDTO
 import com.example.shared_common.presentation.BaseViewModel
@@ -24,7 +28,7 @@ class PokemonViewModel(
         }
     }
 
-    fun redirectDetailPokemon() {
-        navigation.redirectDetailPokemon(pokemon.value?.forms?.get(0)?.url ?: "")
+    fun redirectDetailPokemon(context: AppCompatActivity) {
+        openDetailPokemon(context, pokemon.value?.forms?.get(0)?.url ?: "")
     }
 }

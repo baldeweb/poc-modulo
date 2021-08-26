@@ -65,6 +65,7 @@ dependencies {
     //  Modulos
     implementation project(':shared-common')
     implementation project(':detail-public')
+    implementation project(':navigation')
     implementation project(':pokemon-public')
     implementation project(':shared-service')
 }
