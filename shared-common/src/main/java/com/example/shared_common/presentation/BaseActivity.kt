@@ -1,10 +1,12 @@
 package com.example.shared_common.presentation
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shared_common.databinding.ActivityBaseBinding
 import com.example.shared_common.presentation.extension.observeNonNull
@@ -41,7 +43,11 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), KoinCompon
 
     private fun initViewModels() {
         viewModel.errorResponse.observeNonNull(this) {
-            Log.d("LOG", "[ERRO API]: ${it.httpCode} - ${it.throwable}")
+            AlertDialog.Builder(this).apply {
+                setTitle("Erro Inesperado")
+                setMessage("[${it.httpCode}] - ${it.throwable?.message ?: "Erro ao pegar as informações"}")
+                setPositiveButton("Ok") { _, _ -> }
+            }.show()
         }
 
         viewModel.shouldShowLoading.observeNonNull(this) {
