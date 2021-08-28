@@ -2,7 +2,6 @@ package com.example.unit_test.pokemon.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.details_public.data.model.DetailPokemonDTO
-import com.example.details_public.presentation.DetailPokemonNavigation
 import com.example.pokemon.presentation.PokemonViewModel
 import com.example.pokemon_public.model.PokemonDTO
 import com.example.unit_test.TestCoroutineRule
@@ -16,7 +15,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
-import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Response
@@ -32,9 +30,6 @@ class PokemonViewModelTest {
     @get:Rule
     val testCoroutineRule = TestCoroutineRule()
 
-    @Mock
-    private lateinit var navigation: DetailPokemonNavigation
-
     private lateinit var fakeRepository: FakePokemonRepository
 
     private lateinit var viewModel: PokemonViewModel
@@ -42,7 +37,7 @@ class PokemonViewModelTest {
     @Before
     fun setUp() {
         fakeRepository = spy(FakePokemonRepository())
-        viewModel = PokemonViewModel(navigation, fakeRepository)
+        viewModel = PokemonViewModel(fakeRepository)
     }
 
     @Test
