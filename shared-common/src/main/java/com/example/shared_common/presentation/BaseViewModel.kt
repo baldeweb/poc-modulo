@@ -1,9 +1,11 @@
 package com.example.shared_common.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shared_domain.common.ServiceErrorModel
+import kotlinx.coroutines.CoroutineExceptionHandler
 import org.koin.core.component.KoinComponent
 import retrofit2.Response
 import java.net.HttpURLConnection.*
@@ -16,31 +18,44 @@ open class BaseViewModel : ViewModel(), KoinComponent {
     private var _shouldShowLoading = MutableLiveData<Boolean>()
     var shouldShowLoading: LiveData<Boolean> = _shouldShowLoading
 
+    protected val apiException = CoroutineExceptionHandler { _, throwable ->
+        Log.d("LOG", "webserviceException - throwable: ${throwable.message}")
+        showDefaultErrorMessage("Algo inesperado ocorreu")
+    }
+
+    protected fun showLoading() {
+        _shouldShowLoading.value = true
+    }
+
+    protected fun dismissLoading() {
+        _shouldShowLoading.value = false
+    }
+
     protected suspend fun <T> serviceCaller(
         api: Response<T>?,
-        onExecute: suspend (T) -> Unit,
         onResponseError: ((ServiceErrorModel) -> Unit)? = null
-    ) {
+    ): T? {
         showLoading()
-        resultHandling(api, onExecute, onResponseError)
+        return resultHandling(api, onResponseError)
     }
 
     protected suspend fun <T> serviceSilentCaller(
         api: Response<T>?,
-        onExecute: suspend (T) -> Unit,
         onResponseError: ((ServiceErrorModel) -> Unit)? = null
-    ) {
-        resultHandling(api, onExecute, onResponseError)
-    }
+    ) = resultHandling(api, onResponseError)
 
-    private suspend fun <T> resultHandling(api: Response<T>?,
-                               onExecute: suspend (T) -> Unit,
-                               onResponseError: ((ServiceErrorModel) -> Unit)? = null) {
+    private fun <T> resultHandling(
+        api: Response<T>?,
+        onResponseError: ((ServiceErrorModel) -> Unit)? = null
+    ): T? {
         when {
             api?.code() == HTTP_OK -> {
                 try {
-                    api.body()?.let { onExecute.invoke(it) }
                     dismissLoading()
+                    if (api.body() == null)
+                        errorResponse(api)
+
+                    return api.body()
                 } catch (exception: Exception) {
                     errorResponse(api)
                 }
@@ -54,20 +69,12 @@ open class BaseViewModel : ViewModel(), KoinComponent {
                         Throwable(errorSerialized)
                     )
                 )
-                return
             }
             else -> {
                 errorResponse(api)
             }
         }
-    }
-
-    protected fun showLoading() {
-        _shouldShowLoading.value = true
-    }
-
-    protected fun dismissLoading() {
-        _shouldShowLoading.value = false
+        return null
     }
 
     private fun <T> errorResponse(api: Response<T>?) {
@@ -94,5 +101,12 @@ open class BaseViewModel : ViewModel(), KoinComponent {
                 )
             }
         }
+    }
+
+    private fun showDefaultErrorMessage(message: String?) {
+        _errorResponse.value =
+            ServiceErrorModel(
+                HTTP_INTERNAL_ERROR, Throwable(message ?: "")
+            )
     }
 }

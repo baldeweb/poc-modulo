@@ -15,10 +15,8 @@ class DetailPokemonViewModel(
     var pokemonDetail: LiveData<DetailPokemonDTO> = _pokemonDetail
 
     fun getPokemonDetail(endpoint: String) {
-        viewModelScope.launch {
-            serviceCaller(repository.getPokemonDetail(endpoint), {
-                _pokemonDetail.value = it
-            })
+        viewModelScope.launch(apiException) {
+            _pokemonDetail.value = serviceCaller(repository.getPokemonDetail(endpoint))
         }
     }
 }

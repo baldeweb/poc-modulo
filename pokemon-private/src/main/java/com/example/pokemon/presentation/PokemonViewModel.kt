@@ -19,11 +19,9 @@ class PokemonViewModel(
     var pokemon: LiveData<PokemonDTO> = _pokemon
 
     fun getPokemon() {
-        viewModelScope.launch {
-            serviceCaller(repository.getPokemon(), {
-                _pokemon.value = it
-                saveEndpoint(pokemon.value?.forms?.get(0)?.url ?: "")
-            })
+        viewModelScope.launch(apiException) {
+            _pokemon.value = serviceCaller(repository.getPokemon())
+            saveEndpoint(pokemon.value?.forms?.get(0)?.url ?: "")
         }
     }
 
