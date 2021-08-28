@@ -99,5 +99,6 @@ dependencies {
     implementation project(':pokemon-private')
     implementation project(':pokemon-public')
     implementation project(':shared-common')
+    implementation project(':storage')
     implementation project(':unit-test')
 }

@@ -10,6 +10,7 @@
       <module name="poc-modulo.pokemon-private" target="1.8" />
       <module name="poc-modulo.shared-common" target="1.8" />
       <module name="poc-modulo.shared-service" target="1.8" />
+      <module name="poc-modulo.storage" target="1.8" />
       <module name="poc-modulo.unit-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/pokemon-public" />
             <option value="$PROJECT_DIR$/shared-common" />
             <option value="$PROJECT_DIR$/shared-service" />
+            <option value="$PROJECT_DIR$/storage" />
             <option value="$PROJECT_DIR$/unit-test" />
           </set>
         </option>
