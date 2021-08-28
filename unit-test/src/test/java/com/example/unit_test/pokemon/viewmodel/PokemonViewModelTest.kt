@@ -1,7 +1,7 @@
 package com.example.unit_test.pokemon.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.details_public.data.model.DetailPokemonDTO
+import com.example.shared_domain.detail_pokemon.DetailPokemonDTO
 import com.example.pokemon.presentation.PokemonViewModel
 import com.example.pokemon_public.model.PokemonDTO
 import com.example.unit_test.TestCoroutineRule
@@ -70,7 +70,7 @@ class PokemonViewModelTest {
     fun `get pokemon MAY BE get error INTERNAL ERROR SERVER`() {
         testCoroutineRule.runBlockingTest {
             doReturn(
-                Response.error<DetailPokemonDTO>(
+                Response.error<com.example.shared_domain.detail_pokemon.DetailPokemonDTO>(
                     HttpURLConnection.HTTP_INTERNAL_ERROR,
                     mock(ResponseBody::class.java)
                 )

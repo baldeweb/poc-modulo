@@ -1,4 +1,4 @@
-package com.example.pokemon_public.model
+package com.example.shared_domain.pokemon
 
 import com.google.gson.annotations.SerializedName
 

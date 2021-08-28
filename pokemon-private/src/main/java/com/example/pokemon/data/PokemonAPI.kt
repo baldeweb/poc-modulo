@@ -1,7 +1,7 @@
 package com.example.pokemon.data
 
-import com.example.pokemon_public.model.PokemonDTO
-import com.example.shared_common.data.model.mock.LoadMock
+import com.example.shared_common.mock.LoadMock
+import com.example.shared_domain.pokemon.PokemonDTO
 import retrofit2.Response
 import retrofit2.http.GET
 

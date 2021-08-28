@@ -92,13 +92,14 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$test_runner_version"
 
     // Projects
-    implementation project(':shared-service')
     implementation project(':detail-private')
     implementation project(':detail-public')
     implementation project(':navigation')
     implementation project(':pokemon-private')
     implementation project(':pokemon-public')
     implementation project(':shared-common')
+    implementation project(':shared-domain')
+    implementation project(':shared-service')
     implementation project(':storage')
     implementation project(':unit-test')
 }

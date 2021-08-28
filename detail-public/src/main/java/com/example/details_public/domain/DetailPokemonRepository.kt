@@ -1,6 +1,6 @@
 package com.example.details_public.domain
 
-import com.example.details_public.data.model.DetailPokemonDTO
+import com.example.shared_domain.detail_pokemon.DetailPokemonDTO
 import retrofit2.Response
 
 interface DetailPokemonRepository {

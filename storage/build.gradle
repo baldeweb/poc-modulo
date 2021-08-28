@@ -42,6 +42,7 @@ dependencies {
     //  Koin
     implementation "io.insert-koin:koin-android:$koin_version"
 
-    //  Modulos
+    //  Modules
     implementation project(':shared-common')
+    implementation project(':shared-domain')
 }

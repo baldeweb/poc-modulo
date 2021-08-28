@@ -2,7 +2,7 @@ package com.example.unit_test.detail.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.details.presentation.DetailPokemonViewModel
-import com.example.details_public.data.model.DetailPokemonDTO
+import com.example.shared_domain.detail_pokemon.DetailPokemonDTO
 import com.example.unit_test.TestCoroutineRule
 import com.example.unit_test.detail.repository.FakeDetailPokemonRepository
 import com.example.unit_test.getOrAwaitValueTest
@@ -52,7 +52,7 @@ class DetailPokemonViewModelTest {
     fun `get pokemon detail MAY BE get error`() {
         testCoroutineRule.runBlockingTest {
             doReturn(
-                Response.error<DetailPokemonDTO>(
+                Response.error<com.example.shared_domain.detail_pokemon.DetailPokemonDTO>(
                     HTTP_INTERNAL_ERROR,
                     mock(ResponseBody::class.java)
                 )
@@ -70,7 +70,7 @@ class DetailPokemonViewModelTest {
     fun `get pokemon detail MAY BE get error INTERNAL ERROR SERVER`() {
         testCoroutineRule.runBlockingTest {
             doReturn(
-                Response.error<DetailPokemonDTO>(
+                Response.error<com.example.shared_domain.detail_pokemon.DetailPokemonDTO>(
                     HTTP_INTERNAL_ERROR,
                     mock(ResponseBody::class.java)
                 )

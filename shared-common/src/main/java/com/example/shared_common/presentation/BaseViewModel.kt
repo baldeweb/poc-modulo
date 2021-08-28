@@ -3,12 +3,7 @@ package com.example.shared_common.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.shared_common.data.model.ServiceErrorModel
-import com.example.shared_common.presentation.extension.SingleLiveEvent
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.example.shared_domain.common.ServiceErrorModel
 import org.koin.core.component.KoinComponent
 import retrofit2.Response
 import java.net.HttpURLConnection.*
@@ -81,10 +76,16 @@ open class BaseViewModel : ViewModel(), KoinComponent {
         when (api?.code()) {
             HTTP_UNAUTHORIZED ->
                 _errorResponse.value =
-                    ServiceErrorModel(HTTP_UNAUTHORIZED, Throwable("Nao autorizado"))
+                    ServiceErrorModel(
+                        HTTP_UNAUTHORIZED,
+                        Throwable("Nao autorizado")
+                    )
             in HTTP_INTERNAL_ERROR..599 ->
                 _errorResponse.value =
-                    ServiceErrorModel(HTTP_INTERNAL_ERROR, Throwable("Server error"))
+                    ServiceErrorModel(
+                        HTTP_INTERNAL_ERROR,
+                        Throwable("Server error")
+                    )
             else -> {
                 val errorSerialized = api?.errorBody()?.charStream()?.readLines()?.get(0).toString()
                 _errorResponse.value = ServiceErrorModel(

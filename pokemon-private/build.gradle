@@ -62,11 +62,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
 
-    //  Modulos
-    implementation project(':shared-common')
+    //  Modules
     implementation project(':detail-public')
     implementation project(':navigation')
     implementation project(':pokemon-public')
+    implementation project(':shared-common')
+    implementation project(':shared-domain')
     implementation project(':shared-service')
     implementation project(':storage')
 }

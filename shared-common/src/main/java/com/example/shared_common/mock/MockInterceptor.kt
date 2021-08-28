@@ -1,8 +1,7 @@
-package com.example.shared_common.data.mock
+package com.example.shared_common.mock
 
 import android.content.Context
 import android.content.res.AssetManager
-import com.example.shared_common.data.model.mock.LoadMock
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
