@@ -13,6 +13,6 @@ class PokemonDAOImpl(
         edit.commit()
     }
 
-    override suspend fun getDetailPokemonUrl(): String =
-        sharedPreferences.getString(ENDPOINT_URL_PREFS, "") ?: ""
+    override suspend fun getDetailPokemonUrl(keyPreference: String): String =
+        sharedPreferences.getString(keyPreference, "") ?: ""
 }

@@ -1,11 +1,12 @@
 package com.example.unit_test.pokemon.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.shared_domain.detail_pokemon.DetailPokemonDTO
 import com.example.pokemon.presentation.PokemonViewModel
-import com.example.pokemon_public.model.PokemonDTO
+import com.example.shared_domain.detail_pokemon.DetailPokemonDTO
+import com.example.shared_domain.pokemon.PokemonDTO
 import com.example.unit_test.TestCoroutineRule
 import com.example.unit_test.getOrAwaitValueTest
+import com.example.unit_test.pokemon.dao.FakePokemonDAO
 import com.example.unit_test.pokemon.repository.FakePokemonRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -16,6 +17,7 @@ import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 import org.mockito.Mockito.*
+import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Response
 import java.net.HttpURLConnection
@@ -30,14 +32,17 @@ class PokemonViewModelTest {
     @get:Rule
     val testCoroutineRule = TestCoroutineRule()
 
+    @Spy
     private lateinit var fakeRepository: FakePokemonRepository
+
+    @Spy
+    private lateinit var fakeDAO: FakePokemonDAO
 
     private lateinit var viewModel: PokemonViewModel
 
     @Before
     fun setUp() {
-        fakeRepository = spy(FakePokemonRepository())
-        viewModel = PokemonViewModel(fakeRepository)
+        viewModel = PokemonViewModel(fakeRepository, fakeDAO)
     }
 
     @Test
@@ -50,7 +55,7 @@ class PokemonViewModelTest {
     }
 
     @Test
-    fun `get pokemon MAY BE get error`() {
+    fun `get pokemon MAY BE gets an error`() {
         testCoroutineRule.runBlockingTest {
             doReturn(
                 Response.error<PokemonDTO>(
@@ -67,10 +72,10 @@ class PokemonViewModelTest {
     }
 
     @Test
-    fun `get pokemon MAY BE get error INTERNAL ERROR SERVER`() {
+    fun `get pokemon MAY BE gets an INTERNAL ERROR SERVER`() {
         testCoroutineRule.runBlockingTest {
             doReturn(
-                Response.error<com.example.shared_domain.detail_pokemon.DetailPokemonDTO>(
+                Response.error<DetailPokemonDTO>(
                     HttpURLConnection.HTTP_INTERNAL_ERROR,
                     mock(ResponseBody::class.java)
                 )

@@ -64,4 +64,6 @@ dependencies {
     implementation project(':pokemon-private')
     implementation project(':pokemon-public')
     implementation project(':shared-common')
+    implementation project(':shared-domain')
+    implementation project(':storage')
 }

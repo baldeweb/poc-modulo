@@ -1,6 +1,5 @@
 package com.example.shared_common.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +18,6 @@ open class BaseViewModel : ViewModel(), KoinComponent {
     var shouldShowLoading: LiveData<Boolean> = _shouldShowLoading
 
     protected val apiException = CoroutineExceptionHandler { _, throwable ->
-        Log.d("LOG", "webserviceException - throwable: ${throwable.message}")
         showDefaultErrorMessage("Algo inesperado ocorreu")
     }
 
