@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.navigation.Actions.openDetailPokemon
+import com.example.navigation.IntentActions.openDetailPokemon
 import com.example.pokemon_public.domain.PokemonRepository
 import com.example.shared_common.presentation.BaseViewModel
 import com.example.shared_domain.pokemon.PokemonDTO
@@ -20,7 +20,7 @@ class PokemonViewModel(
 
     fun getPokemon() {
         viewModelScope.launch(apiException) {
-            _pokemon.value = serviceCaller(repository.getPokemon())
+            serviceCaller(repository.getPokemon())?.let { _pokemon.value = it  }
             saveEndpoint(pokemon.value?.forms?.get(0)?.url ?: "")
         }
     }

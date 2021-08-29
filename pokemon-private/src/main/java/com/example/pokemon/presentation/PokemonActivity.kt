@@ -3,7 +3,6 @@ package com.example.pokemon.presentation
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.example.navigation.Actions.openDetailPokemon
 import com.example.shared_common.presentation.BaseActivity
 import com.example.shared_common.presentation.extension.observeNonNull
 import com.example.pokemon.databinding.ActivityListPokemonBinding
