@@ -2,8 +2,8 @@ package com.example.navigation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.example.navigation.ActionName.DETAIL_POKEMON_ACTION
-import com.example.navigation.KeyExtrasAction.ENDPOINT
+import com.example.navigation.ConstantsActions.DETAIL_POKEMON_ACTION
+import com.example.shared_common.presentation.constants.KeyNameConstants.ENDPOINT
 
 object IntentActions {
     fun openDetailPokemon(activity: AppCompatActivity, endpoint: String) {

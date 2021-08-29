@@ -39,5 +39,6 @@ dependencies {
     //  Google Components
     implementation "androidx.appcompat:appcompat:$appcompat_version"
 
+    implementation project(':shared-common')
     implementation project(':shared-domain')
 }
