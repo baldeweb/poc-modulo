@@ -1,8 +1,6 @@
 package com.example.shared_common.presentation
 
-import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
