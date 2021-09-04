@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:32788606712:android:0c3c424a6ececb98b0d50d",
         "android_client_info": {
-          "package_name": "com.example.poc_modulo"
+          "package_name": "com.wallace.poc_modulo"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "32788606712-pkuo2sfeokg30pgnhauv3lrbkjsgr2j9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.poc_modulo",
+            "package_name": "com.wallace.poc_modulo",
             "certificate_hash": "d3c31b0d0d21a45795116ad572b360d9a889051e"
           }
         },

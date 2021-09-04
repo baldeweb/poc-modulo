@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.poc_modulo">
+    package="com.wallace.poc_modulo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -17,7 +17,7 @@
         tools:replace="android:label,android:allowBackup"
         tools:targetApi="n">
         <activity
-            android:name="com.example.pokemon.presentation.PokemonActivity"
+            android:name="com.wallace.pokemon.presentation.PokemonActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.details.presentation.DetailPokemonActivity"
+            android:name="com.wallace.details.presentation.DetailPokemonActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize">
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.shared_common.presentation.BaseActivity"
+            android:name="com.wallace.shared_common.presentation.BaseActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"/>

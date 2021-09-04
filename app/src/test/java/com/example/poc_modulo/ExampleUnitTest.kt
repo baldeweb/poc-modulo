@@ -1,4 +1,4 @@
-package com.example.poc_modulo
+package com.wallace.poc_modulo
 
 import org.junit.Test
 

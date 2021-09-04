@@ -6,6 +6,7 @@
       <module name="poc-modulo.benchmark" target="1.8" />
       <module name="poc-modulo.detail-private" target="1.8" />
       <module name="poc-modulo.detail-public" target="1.8" />
+      <module name="poc-modulo.dynamicfeature" target="1.8" />
       <module name="poc-modulo.navigation" target="1.8" />
       <module name="poc-modulo.photo-gallery" target="1.8" />
       <module name="poc-modulo.pokemon-private" target="1.8" />
