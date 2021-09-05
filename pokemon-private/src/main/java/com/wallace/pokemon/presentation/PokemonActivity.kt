@@ -6,6 +6,7 @@ import android.view.View
 import com.wallace.shared_common.presentation.BaseActivity
 import com.wallace.shared_common.presentation.extension.observeNonNull
 import com.wallace.pokemon.databinding.ActivityListPokemonBinding
+import com.wallace.shared_common.presentation.extension.StringUtils.logD
 
 class PokemonActivity : BaseActivity<PokemonViewModel>() {
     private lateinit var binding: ActivityListPokemonBinding
@@ -17,11 +18,11 @@ class PokemonActivity : BaseActivity<PokemonViewModel>() {
 
         viewModel.getPokemon()
         viewModel.pokemon.observeNonNull(this) {
-            Log.d("LOG", "DADOS: $it")
+            logD("DADOS: $it")
         }
     }
 
-    fun buscarDetalhes(view: View) {
+    fun buscarDetalhes(v: View) {
         viewModel.redirectDetailPokemon(this)
     }
 }

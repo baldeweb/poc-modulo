@@ -1,1 +1,3 @@
-<resources></resources>
+<resources>
+    <string name="dynamic_name_detail_private">detail_private</string>
+</resources>

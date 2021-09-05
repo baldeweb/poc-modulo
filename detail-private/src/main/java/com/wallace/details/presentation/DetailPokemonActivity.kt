@@ -5,6 +5,7 @@ import android.util.Log
 import com.wallace.shared_common.presentation.BaseActivity
 import com.wallace.details.databinding.ActivityDetailPokemonBinding
 import com.wallace.shared_common.presentation.constants.KeyNameConstants.ENDPOINT
+import com.wallace.shared_common.presentation.extension.StringUtils.logD
 import com.wallace.shared_common.presentation.extension.observeNonNull
 
 class DetailPokemonActivity : BaseActivity<DetailPokemonViewModel>() {
@@ -17,7 +18,7 @@ class DetailPokemonActivity : BaseActivity<DetailPokemonViewModel>() {
 
         viewModel.getPokemonDetail(intent?.getStringExtra(ENDPOINT) ?: "")
         viewModel.pokemonDetail.observeNonNull(this) {
-            Log.d("LOG", "getPokemonDetail(): $it")
+            logD("getPokemonDetail(): $it")
         }
     }
 }

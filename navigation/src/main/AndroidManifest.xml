@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.wallace.navigation">
 
+    <dist:module
+        dist:instant="false"
+        dist:hasCode="false"
+        dist:onDemand="true"
+        dist:title="dynamic_name_navigation">
+    </dist:module>
 </manifest>
