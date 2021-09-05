@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.appdistribution'
+    id 'com.google.firebase.firebase-perf'
 }
 
 android {
@@ -56,8 +57,9 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     //  Firebase
-    implementation platform('com.google.firebase:firebase-bom:28.3.1')
+    implementation platform('com.google.firebase:firebase-bom:28.4.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-perf-ktx'
 
     // Google Components:
     implementation "androidx.cardview:cardview:$card_view_version"
