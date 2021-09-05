@@ -7,14 +7,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:32788606712:android:0c3c424a6ececb98b0d50d",
+        "mobilesdk_app_id": "1:32788606712:android:2e7eab001039c5b9b0d50d",
         "android_client_info": {
           "package_name": "com.wallace.poc_modulo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "32788606712-pkuo2sfeokg30pgnhauv3lrbkjsgr2j9.apps.googleusercontent.com",
+          "client_id": "32788606712-150sqs0e206pc3740cmaofuj3dtbrq62.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.wallace.poc_modulo",
@@ -37,6 +37,13 @@
             {
               "client_id": "32788606712-43979t5nfe2j8skp362qutpgv00be4cq.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "32788606712-70af09tth1vqfak47n483a9h96mf0ipg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wallace.poc-modulo"
+              }
             }
           ]
         }
