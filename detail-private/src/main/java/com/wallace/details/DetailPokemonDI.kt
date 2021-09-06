@@ -10,7 +10,7 @@ import org.koin.dsl.module
 class DetailPokemonDI {
     fun getModule() : Module {
         return module {
-            viewModel { DetailPokemonViewModel(get()) }
+            viewModel { DetailPokemonViewModel(get(), get()) }
             single<DetailPokemonRepository> { DetailPokemonRepositoryImpl(get()) }
         }
     }

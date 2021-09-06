@@ -42,10 +42,11 @@ dependencies {
     //  Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
-    // Google Components:
+    //  Google Components:
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
+    implementation "com.google.android.play:core:$play_core"
 
     //  Koin
     implementation "io.insert-koin:koin-android:$koin_version"
@@ -53,13 +54,13 @@ dependencies {
     //  OkHttp
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
-    // Retrofit
+    //  Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
-    // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    //  ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_viewmodel"
 
     implementation project(':shared-domain')
 }

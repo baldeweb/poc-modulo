@@ -1,8 +1,12 @@
 package com.wallace.shared_common.presentation
 
+import android.app.Activity.RESULT_CANCELED
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.wallace.shared_common.presentation.constants.OtherConstants.CONFIRMATION_REQUEST_CODE
+import com.wallace.shared_common.presentation.extension.StringUtils
 import com.wallace.shared_domain.common.ServiceErrorModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import org.koin.core.component.KoinComponent
@@ -106,5 +110,15 @@ open class BaseViewModel : ViewModel(), KoinComponent {
             ServiceErrorModel(
                 HTTP_INTERNAL_ERROR, Throwable(message ?: "")
             )
+    }
+
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == CONFIRMATION_REQUEST_CODE) {
+            if (resultCode == RESULT_CANCELED) {
+                StringUtils.logV("onActivityResult >> USUARIO CANCELOU")
+            }
+        } else {
+            return
+        }
     }
 }

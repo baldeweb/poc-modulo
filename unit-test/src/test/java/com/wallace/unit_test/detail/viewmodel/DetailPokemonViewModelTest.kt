@@ -2,7 +2,6 @@ package com.wallace.unit_test.detail.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.wallace.details.presentation.DetailPokemonViewModel
-import com.wallace.shared_domain.detail_pokemon.DetailPokemonDTO
 import com.wallace.unit_test.TestCoroutineRule
 import com.wallace.unit_test.detail.repository.FakeDetailPokemonRepository
 import com.wallace.unit_test.getOrAwaitValueTest
@@ -42,7 +41,7 @@ class DetailPokemonViewModelTest {
     @Test
     fun `get pokemon detail MAY BE NOT null`() {
         testCoroutineRule.runBlockingTest {
-            viewModel.getPokemonDetail("")
+            viewModel.getPokemonDetail()
             val pokemonDetailValue = viewModel.pokemonDetail.getOrAwaitValueTest()
             Truth.assertThat(pokemonDetailValue).isNotNull()
         }
@@ -59,7 +58,7 @@ class DetailPokemonViewModelTest {
             )
                 .`when`(fakeRepository).getPokemonDetail("")
 
-            viewModel.getPokemonDetail("")
+            viewModel.getPokemonDetail()
 
             val pokemonDetailValue = viewModel.pokemonDetail.value
             Truth.assertThat(pokemonDetailValue).isNull()
@@ -76,7 +75,7 @@ class DetailPokemonViewModelTest {
                 )
             ).`when`(fakeRepository).getPokemonDetail("")
 
-            viewModel.getPokemonDetail("")
+            viewModel.getPokemonDetail()
 
             Truth.assertThat(viewModel.errorResponse.value?.httpCode).isEqualTo(HTTP_INTERNAL_ERROR)
         }

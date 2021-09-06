@@ -8,8 +8,6 @@ import com.wallace.navigation.IntentActions.openDetailPokemon
 import com.wallace.pokemon_public.domain.PokemonRepository
 import com.wallace.shared_common.presentation.BaseViewModel
 import com.wallace.shared_domain.pokemon.PokemonDTO
-import com.wallace.storage.dao.ConstantsDAO
-import com.wallace.storage.dao.ConstantsDAO.ENDPOINT_URL_PREFS
 import com.wallace.storage.pokemon.PokemonDAO
 import kotlinx.coroutines.launch
 
@@ -23,19 +21,17 @@ class PokemonViewModel(
     fun getPokemon() {
         viewModelScope.launch(apiException) {
             serviceCaller(repository.getPokemon())?.let { _pokemon.value = it  }
-            saveEndpoint(pokemon.value?.forms?.get(0)?.url ?: "")
+            saveEndpoint(pokemon.value?.forms?.first()?.url ?: "")
         }
     }
 
     fun redirectDetailPokemon(context: AppCompatActivity) {
         viewModelScope.launch {
-            openDetailPokemon(context, getEndpoint())
+            openDetailPokemon(context)
         }
     }
 
     private suspend fun saveEndpoint(url: String) {
         dao.saveDetailPokemonUrl(url)
     }
-
-    private suspend fun getEndpoint() = dao.getDetailPokemonUrl(ENDPOINT_URL_PREFS)
 }

@@ -4,8 +4,8 @@ import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.wallace.shared_service.BuildConfig
 import com.wallace.shared_common.mock.MockInterceptor
-import com.wallace.shared_common.presentation.constants.Constants
-import com.wallace.shared_common.presentation.constants.Constants.BASE_URL
+import com.wallace.shared_common.presentation.constants.OtherConstants
+import com.wallace.shared_common.presentation.constants.OtherConstants.BASE_URL
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,7 +24,7 @@ open class BaseRepository<T>(val context: Context, private val shouldStartMock: 
     ): Response<E> = response.invoke(this.create())
 
     protected inline fun <reified T> create(): T {
-        val okHttpClient = getOkHttpClient(context, Constants.TIMEOUT)
+        val okHttpClient = getOkHttpClient(context, OtherConstants.TIMEOUT)
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(
