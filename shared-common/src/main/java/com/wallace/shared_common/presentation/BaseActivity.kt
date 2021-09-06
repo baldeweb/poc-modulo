@@ -50,14 +50,14 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), KoinCompon
                 showLoading()
             }
             INSTALLED -> {
-                logV("stateListener >> INSTALLED")
                 dismissLoading()
-                onSuccessSplitModuleInstalled(
-                    (state.moduleNames() as ArrayList<String>).first()
-                )
+                val moduleName = (state.moduleNames() as ArrayList<String>).first()
+                logV("stateListener >> INSTALLED >> $moduleName")
+                onSuccessSplitModuleInstalled(moduleName)
             }
             REQUIRES_USER_CONFIRMATION -> {
                 logV("stateListener >> REQUIRES_USER_CONFIRMATION")
+                dismissLoading()
                 splitManager.startConfirmationDialogForResult(
                     state,
                     this,

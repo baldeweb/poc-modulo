@@ -4,6 +4,7 @@
     package="com.wallace.poc_modulo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />
 
     <application
         android:name=".PokemonApplication"
