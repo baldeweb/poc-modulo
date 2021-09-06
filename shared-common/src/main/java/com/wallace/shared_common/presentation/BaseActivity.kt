@@ -2,6 +2,7 @@ package com.wallace.shared_common.presentation
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
@@ -80,7 +81,7 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), KoinCompon
                 startActivity(
                     Intent(DETAIL_POKEMON_ACTION_NAME).apply {
                         setPackage(packageName)
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(FLAG_ACTIVITY_NEW_TASK)
                     }
                 )
             }
