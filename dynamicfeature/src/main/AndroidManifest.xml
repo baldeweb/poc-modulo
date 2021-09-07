@@ -12,8 +12,8 @@
         </dist:delivery>
         <dist:fusing dist:include="false" />
     </dist:module>
+
     <application
         android:hasCode="false"
-        tools:replace="android:hasCode">
-    </application>
+        tools:replace="android:hasCode" />
 </manifest>
