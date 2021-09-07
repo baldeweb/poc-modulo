@@ -1,13 +1,10 @@
 package com.wallace.poc_modulo
 
-import android.app.Application
-import android.content.Context
-import com.google.android.play.core.splitcompat.SplitCompat
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.wallace.details.DetailPokemonDI
 import com.wallace.pokemon.PokemonDI
 import com.wallace.shared_common.SharedCommonDI
-import com.wallace.shared_service.DaycovalServiceDI
+import com.wallace.shared_service.SharedServiceDI
 import com.wallace.storage.DaoDI
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -19,10 +16,10 @@ class PokemonApplication: SplitCompatApplication() {
 
         val moduleList = listOf(
             DaoDI().getModule(),
-            DaycovalServiceDI().getModule(),
             DetailPokemonDI().getModule(),
             PokemonDI().getModule(),
-            SharedCommonDI().getModule()
+            SharedCommonDI().getModule(),
+            SharedServiceDI().getModule()
         )
 
         startKoin {
