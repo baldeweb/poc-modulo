@@ -4,9 +4,14 @@
     package="com.wallace.pokemon">
 
     <dist:module
-        dist:instant="false"
-        dist:hasCode="false"
-        dist:onDemand="true"
-        dist:title="dynamic_name_pokemon_private">
+        dist:title="pokemon_private">
+        <dist:fusing dist:include="true" />
+        <dist:delivery>
+            <dist:on-demand />
+        </dist:delivery>
     </dist:module>
+
+    <!-- This feature module doesn't contain code. -->
+    <application android:hasCode="false" />
+
 </manifest>
