@@ -2,7 +2,6 @@ plugins {
     id 'com.android.dynamic-feature'
     id 'kotlin-android'
 }
-
 android {
     compileSdkVersion 30
 
@@ -10,17 +9,10 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:$core_ktx"
-    implementation "com.google.android.play:core:$play_core"
-
-    implementation project(':app')
+    implementation project(":app")
+    implementation 'androidx.core:core-ktx:1.6.0'
+    androidTestImplementation 'androidx.annotation:annotation:1.2.0'
 }
