@@ -17,15 +17,10 @@ android {
         targetSdkVersion 30
         versionCode 3
         versionName "1.2"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        debug {
-
-        }
-
+        debug {}
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -37,13 +32,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 
     buildFeatures {
         viewBinding true
     }
 
-    dynamicFeatures = [':dynamicfeature']
+    dynamicFeatures = [
+    ]
 }
 
 dependencies {
@@ -67,6 +63,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
     implementation "com.google.android.play:core:$play_core"
+    implementation "com.google.android.play:core-ktx:$play_core_ktx"
 
     // Gson
     implementation "com.google.code.gson:gson:$gson_version"

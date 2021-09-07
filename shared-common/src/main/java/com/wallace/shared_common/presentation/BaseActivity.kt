@@ -1,6 +1,7 @@
 package com.wallace.shared_common.presentation
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.view.View.VISIBLE
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.play.core.install.model.InstallStatus.*
+import com.google.android.play.core.splitcompat.SplitCompat
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
@@ -17,9 +19,9 @@ import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListene
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus.CANCELING
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION
 import com.wallace.shared_common.databinding.ActivityBaseBinding
-import com.wallace.shared_common.presentation.constants.OtherConstants.CONFIRMATION_REQUEST_CODE
-import com.wallace.shared_common.presentation.constants.NavigationActionsConstants.DETAIL_POKEMON_ACTION_NAME
 import com.wallace.shared_common.presentation.constants.ModuleNameConstants.DETAIL_PRIVATE_MODULE_NAME
+import com.wallace.shared_common.presentation.constants.NavigationActionsConstants.DETAIL_POKEMON_ACTION_NAME
+import com.wallace.shared_common.presentation.constants.OtherConstants.CONFIRMATION_REQUEST_CODE
 import com.wallace.shared_common.presentation.extension.StringUtils.logV
 import com.wallace.shared_common.presentation.extension.observeNonNull
 import org.koin.androidx.viewmodel.ext.android.getViewModel
@@ -100,6 +102,11 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), KoinCompon
         initViewModels()
         dynamicFeature()
     }
+//
+//    override fun attachBaseContext(newBase: Context) {
+//        super.attachBaseContext(this)
+//        SplitCompat.installActivity(this)
+//    }
 
     override fun onResume() {
         splitManager.registerListener(stateListener)
@@ -154,7 +161,6 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), KoinCompon
         val request = SplitInstallRequest
             .newBuilder()
             .addModule("detail-private")
-            .addModule("detail-public")
             .build()
 
         val splitInstallManager = SplitInstallManagerFactory.create(this)

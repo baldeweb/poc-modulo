@@ -3,10 +3,10 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.wallace.details">
 
-    <dist:module
-        dist:instant="false"
-        dist:hasCode="false"
-        dist:onDemand="true"
-        dist:title="@string/dynamic_name_detail_private">
+    <dist:module dist:title="detail-private">
+        <dist:delivery>
+            <dist:on-demand />
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
     </dist:module>
 </manifest>

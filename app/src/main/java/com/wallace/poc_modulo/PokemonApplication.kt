@@ -1,6 +1,8 @@
 package com.wallace.poc_modulo
 
 import android.app.Application
+import android.content.Context
+import com.google.android.play.core.splitcompat.SplitCompat
 import com.wallace.details.DetailPokemonDI
 import com.wallace.pokemon.PokemonDI
 import com.wallace.shared_common.SharedCommonDI
