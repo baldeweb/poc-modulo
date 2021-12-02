@@ -1,7 +1,7 @@
 package com.wallace.unit_test.pokemon.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.wallace.pokemon.presentation.PokemonViewModel
+import com.wallace.pokemon.presentation.viewmodel.PokemonViewModel
 import com.wallace.shared_domain.detail_pokemon.DetailPokemonDTO
 import com.wallace.shared_domain.pokemon.PokemonDTO
 import com.wallace.unit_test.TestCoroutineRule
@@ -62,7 +62,7 @@ class PokemonViewModelTest {
                     HttpURLConnection.HTTP_INTERNAL_ERROR,
                     mock(ResponseBody::class.java)
                 )
-            ).`when`(fakeRepository).getPokemon()
+            ).`when`(fakeRepository).getPokemon(pokemonName)
 
             viewModel.getPokemon()
             val pokemonDetailValue = viewModel.pokemon.value
@@ -79,7 +79,7 @@ class PokemonViewModelTest {
                     HttpURLConnection.HTTP_INTERNAL_ERROR,
                     mock(ResponseBody::class.java)
                 )
-            ).`when`(fakeRepository).getPokemon()
+            ).`when`(fakeRepository).getPokemon(pokemonName)
 
             viewModel.getPokemon()
 

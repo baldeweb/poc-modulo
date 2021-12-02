@@ -8,7 +8,7 @@ import retrofit2.http.Url
 
 interface DetailPokemonAPI {
 
-    @LoadMock("detail/detail.json")
+    //@LoadMock("detail/detail.json")
     @GET
     suspend fun getPokemonDetail(@Url endpoint: String): Response<DetailPokemonDTO>
 }

@@ -1,4 +1,4 @@
-package com.wallace.details.presentation
+package com.wallace.details.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

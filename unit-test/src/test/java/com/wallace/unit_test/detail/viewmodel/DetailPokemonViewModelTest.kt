@@ -1,7 +1,7 @@
 package com.wallace.unit_test.detail.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.wallace.details.presentation.DetailPokemonViewModel
+import com.wallace.details.presentation.viewmodel.DetailPokemonViewModel
 import com.wallace.unit_test.TestCoroutineRule
 import com.wallace.unit_test.detail.repository.FakeDetailPokemonRepository
 import com.wallace.unit_test.getOrAwaitValueTest

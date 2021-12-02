@@ -1,4 +1,4 @@
-package com.wallace.pokemon.presentation
+package com.wallace.pokemon.presentation.viewmodel
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
@@ -18,15 +18,10 @@ class PokemonViewModel(
     private var _pokemon = MutableLiveData<PokemonDTO>()
     var pokemon: LiveData<PokemonDTO> = _pokemon
 
-    fun getPokemon() {
+    fun getPokemon(context: AppCompatActivity, pokemonName: String) {
         viewModelScope.launch(apiException) {
-            serviceCaller(repository.getPokemon())?.let { _pokemon.value = it  }
+            serviceCaller(repository.getPokemon(pokemonName.lowercase()))?.let { _pokemon.value = it  }
             saveEndpoint(pokemon.value?.forms?.first()?.url ?: "")
-        }
-    }
-
-    fun redirectDetailPokemon(context: AppCompatActivity) {
-        viewModelScope.launch {
             openDetailPokemon(context)
         }
     }

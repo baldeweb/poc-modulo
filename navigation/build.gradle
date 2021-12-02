@@ -34,6 +34,10 @@ dependencies {
     //  Google Components
     implementation "androidx.appcompat:appcompat:$appcompat_version"
 
+    //  Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
     implementation project(':shared-common')
     implementation project(':shared-domain')
 }

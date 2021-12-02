@@ -18,7 +18,7 @@
         tools:replace="android:label,android:allowBackup"
         tools:targetApi="n">
         <activity
-            android:name="com.wallace.pokemon.presentation.PokemonActivity"
+            android:name="com.wallace.pokemon.presentation.activity.PokemonActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.wallace.details.presentation.DetailPokemonActivity"
+            android:name="com.wallace.details.presentation.activity.DetailPokemonActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize">
