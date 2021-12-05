@@ -1,7 +1,9 @@
 package com.wallace.unit_test.pokemon.viewmodel
 
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.wallace.pokemon.presentation.PokemonViewModel
+import com.wallace.pokemon.presentation.viewmodel.PokemonViewModel
 import com.wallace.shared_domain.detail_pokemon.DetailPokemonDTO
 import com.wallace.shared_domain.pokemon.PokemonDTO
 import com.wallace.unit_test.TestCoroutineRule
@@ -16,6 +18,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
+import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
@@ -38,6 +41,9 @@ class PokemonViewModelTest {
     @Spy
     private lateinit var fakeDAO: FakePokemonDAO
 
+    @Mock
+    private lateinit var context: AppCompatActivity
+
     private lateinit var viewModel: PokemonViewModel
 
     @Before
@@ -48,7 +54,7 @@ class PokemonViewModelTest {
     @Test
     fun `get pokemon MAY BE NOT null`() {
         testCoroutineRule.runBlockingTest {
-            viewModel.getPokemon()
+            viewModel.getPokemon(context, anyString())
             val pokemonValue = viewModel.pokemon.getOrAwaitValueTest()
             assertThat(pokemonValue).isNotNull()
         }
@@ -62,9 +68,9 @@ class PokemonViewModelTest {
                     HttpURLConnection.HTTP_INTERNAL_ERROR,
                     mock(ResponseBody::class.java)
                 )
-            ).`when`(fakeRepository).getPokemon()
+            ).`when`(fakeRepository).getPokemon(anyString())
 
-            viewModel.getPokemon()
+            viewModel.getPokemon(context, anyString())
             val pokemonDetailValue = viewModel.pokemon.value
 
             assertThat(pokemonDetailValue).isNull()
@@ -79,9 +85,9 @@ class PokemonViewModelTest {
                     HttpURLConnection.HTTP_INTERNAL_ERROR,
                     mock(ResponseBody::class.java)
                 )
-            ).`when`(fakeRepository).getPokemon()
+            ).`when`(fakeRepository).getPokemon(anyString())
 
-            viewModel.getPokemon()
+            viewModel.getPokemon(context, anyString())
 
             assertThat(viewModel.errorResponse.value?.httpCode)
                 .isEqualTo(HttpURLConnection.HTTP_INTERNAL_ERROR)

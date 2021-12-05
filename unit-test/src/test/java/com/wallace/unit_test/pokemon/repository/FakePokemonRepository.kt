@@ -5,5 +5,5 @@ import com.wallace.shared_domain.pokemon.PokemonDTO
 import retrofit2.Response
 
 open class FakePokemonRepository : PokemonRepository {
-    override suspend fun getPokemon(): Response<PokemonDTO> = Response.success(PokemonDTO())
+    override suspend fun getPokemon(pokemonName: String): Response<PokemonDTO> = Response.success(PokemonDTO())
 }

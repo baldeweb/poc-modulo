@@ -4,5 +4,5 @@ import com.wallace.shared_domain.pokemon.PokemonDTO
 import retrofit2.Response
 
 interface PokemonRepository {
-    suspend fun getPokemon(): Response<PokemonDTO>?
+    suspend fun getPokemon(pokemonName: String): Response<PokemonDTO>?
 }

@@ -3,15 +3,18 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.wallace.pokemon">
 
-    <dist:module
-        dist:title="pokemon_private">
+    <dist:module dist:title="pokemon_private">
         <dist:fusing dist:include="true" />
+
         <dist:delivery>
             <dist:on-demand />
         </dist:delivery>
     </dist:module>
 
-    <!-- This feature module doesn't contain code. -->
-    <application android:hasCode="false" />
+    <application android:hasCode="false">
+        <activity
+            android:name=".presentation.activity.PokemonImageActivity"
+            android:exported="false" />
+    </application>
 
 </manifest>
