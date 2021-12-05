@@ -6,6 +6,8 @@ import com.wallace.unit_test.TestCoroutineRule
 import com.wallace.unit_test.detail.repository.FakeDetailPokemonRepository
 import com.wallace.unit_test.getOrAwaitValueTest
 import com.google.common.truth.Truth
+import com.wallace.storage.pokemon.PokemonDAO
+import com.wallace.unit_test.pokemon.dao.FakePokemonDAO
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.ResponseBody
 import org.junit.Before
@@ -31,11 +33,13 @@ class DetailPokemonViewModelTest {
     private lateinit var fakeRepository: FakeDetailPokemonRepository
 
     private lateinit var viewModel: DetailPokemonViewModel
+    private lateinit var dao: PokemonDAO
 
     @Before
     fun setUp() {
         fakeRepository = spy(FakeDetailPokemonRepository())
-        viewModel = DetailPokemonViewModel(fakeRepository)
+        dao = spy(FakePokemonDAO())
+        viewModel = DetailPokemonViewModel(fakeRepository, dao)
     }
 
     @Test
